@@ -16,6 +16,6 @@ class AccountsController extends Controller
 
     public function blank()
     {
-        return view ()
+        return view ();
     }
 }
