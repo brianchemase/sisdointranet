@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\accounts\AccountsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('page');
 });
+
+Route::group(['prefix' => 'accounts'], function() {
+
+    Route::get('/', [AccountsController::class, 'index'])->name('AccountsHome');
+    
+    Route::get('/patients', [AccountsController::class, 'PatientsList'])->name('PatientsList');
+   
+    }
+    );
