@@ -63,8 +63,8 @@ https://templatemo.com/tm-563-seo-dream
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <!-- <li class="scroll-to-section"><a href="#features">Features</a></li>
               <li class="scroll-to-section"><a href="#about">About Us</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li> -->
+              <li class="scroll-to-section"><a href="#services">Services</a></li>-->
+              <li class="scroll-to-section"><a href="{{route('AccountsHome')}}">Accounts</a></li> 
               <li class="scroll-to-section"><a href="https://sisdo.co.ke/webmail">Staffmail</a></li> 
               <li class="scroll-to-section"><div class="main-blue-button"><a href="#">Login</a></div></li> 
             </ul>        

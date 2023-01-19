@@ -23,6 +23,11 @@ Route::get('/', function () {
 Route::group(['prefix' => 'accounts'], function() {
 
     Route::get('/', [AccountsController::class, 'index'])->name('AccountsHome');
+    Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
+
+    Route::get('/blank', [AccountsController::class, 'blank'])->name('Accountsblank');
+    Route::get('/forms', [AccountsController::class, 'forms'])->name('Accountsform');
+
     
     Route::get('/patients', [AccountsController::class, 'PatientsList'])->name('PatientsList');
    

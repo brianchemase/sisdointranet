@@ -34,8 +34,18 @@ class AccountsController extends Controller
     ));
     }
 
+    public function tables()
+    {
+        return view ('accounts.tables');
+    }
+
     public function blank()
     {
-        return view ();
+        return view ('accounts.blank');
+    }
+
+    public function forms()
+    {
+        return view ('accounts.form');
     }
 }
