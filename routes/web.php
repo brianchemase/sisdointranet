@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accounts\AccountsController;
+use App\Http\Controllers\auth\AuthenticationController;
 
 
 
@@ -20,7 +21,11 @@ Route::get('/', function () {
     return view('page');
 });
 
-Route::group(['prefix' => 'accounts'], function() {
+Route::get('/auth/login', [AuthenticationController::class, 'logpage'])->name('loginPage');
+Route::post('/check', [AuthenticationController::class, 'checkauth'])->name('authenticate');
+
+
+Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function() {
 
     Route::get('/', [AccountsController::class, 'index'])->name('AccountsHome');
     Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
