@@ -3,9 +3,10 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('AccountsHome')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <!-- <i class="fas fa-laugh-wink"></i> -->
+                    <img src="logo/sisdologo.png" alt="logo" width="50" height="60">
                 </div>
-                <div class="sidebar-brand-text mx-3">SISDO INTRANET <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">SISDO INTRANET <sup>NGO</sup></div>
             </a>
 
             <!-- Divider -->

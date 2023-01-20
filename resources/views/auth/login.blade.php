@@ -30,7 +30,9 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-12">
             <div class="form-block mx-auto">
+            
               <div class="text-center mb-5">
+              <img src="{{asset('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
               <h3>Login to <strong>SISDO INTRANET</strong></h3>
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
               </div>
