@@ -66,7 +66,7 @@ https://templatemo.com/tm-563-seo-dream
               <li class="scroll-to-section"><a href="#services">Services</a></li>-->
               <li class="scroll-to-section"><a href="{{route('AccountsHome')}}">Accounts</a></li> 
               <li class="scroll-to-section"><a href="https://sisdo.co.ke/webmail">Staffmail</a></li> 
-              <li class="scroll-to-section"><div class="main-blue-button"><a href="#">Login</a></div></li> 
+              <li class="scroll-to-section"><div class="main-blue-button"><a href="{{route('loginPage')}}">Login</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
@@ -105,7 +105,7 @@ https://templatemo.com/tm-563-seo-dream
                   </div>
                   <div class="col-lg-12">
                     <div class="main-green-button scroll-to-section">
-                      <a href="#">lOGIN</a>
+                      <a href="{{route('loginPage')}}">lOGIN</a>
                     </div>
                   </div>
                 </div>
