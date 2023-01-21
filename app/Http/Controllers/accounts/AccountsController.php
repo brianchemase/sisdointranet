@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\accounts;
-
+use App\Models\ClientsData;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AccountsController extends Controller
 
         $montly_repayments="250000";
         $lastMontRepayments="350000";
-        $clients_counts="125";
+       // $clients_counts="125";
 
         $mpesa_repayments=2000000;
         $bank_repayments=1000000;
@@ -25,7 +25,7 @@ class AccountsController extends Controller
 
 
 
-
+		$clients_counts=ClientsData::count();
 
 
         return view('accounts.home' , 
@@ -33,6 +33,11 @@ class AccountsController extends Controller
         'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment'
     
     ));
+    }
+
+	public function newclientregister()
+    {
+        return view ('accounts.newclient');
     }
 
     public function tables()
@@ -115,4 +120,17 @@ class AccountsController extends Controller
 
         return view ('accounts.clientstables', compact('clients'));
     }
+
+	public function loaned_list()
+	{
+		$loaned=DB::select("SELECT l.id_number, c.id_number,c.first_name, c.last_name, l.loan_id, l.loan_applied, l.loan_status, l.loan_approved AS amount_approved , l.approval_by, s.names AS loan_approver from tbl_loaning AS l
+		JOIN clients_data AS c
+		ON l.id_number=c.id_number 
+		JOIN staff AS s
+		ON s.id=l.approval_by");
+
+		//return $loaned;
+
+		return view ('accounts.clientsloaned', compact('loaned'));
+	}
 }

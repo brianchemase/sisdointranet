@@ -6,8 +6,8 @@
 
 <div class="container-fluid">
  <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">SISDO Clients lIST</h1>
-                    <p class="mb-4">A table showing a list of all registered clients on the SISDO Intranet <a target="_blank"
+            <h1 class="h3 mb-2 text-gray-800">SISDO Loaning Clients lIST</h1>
+                    <p class="mb-4">A table showing a list of all loaned clients on the SISDO Intranet <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
 
                     <!-- DataTales Example -->
@@ -23,10 +23,11 @@
                                             <th>#</th>
                                             <th>Names</th>
                                             <th>ID Number</th>
-                                            <th>Mobile No</th>
-                                            <th>Client email</th>
-                                            <th>Gender</th>
-                                            <th>Location</th>
+                                            <th>LoadID</th>
+                                            <th>Amount Applied</th>
+                                            <th>Status</th>
+                                            <th>Amount Approved</th>
+                                            <th>Approval officer</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -34,23 +35,26 @@
                                             <th>#</th>
                                             <th>Names</th>
                                             <th>ID Number</th>
-                                            <th>Mobile No</th>
-                                            <th>Client email</th>
-                                            <th>Gender</th>
-                                            <th>Location</th>
+                                            <th>LoadID</th>
+                                            <th>Amount Applied</th>
+                                            <th>Status</th>
+                                            <th>Amount Approved</th>
+                                            <th>Approval officer</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 
-                                            @foreach ($clients as $client)
+                                            @foreach ($loaned as $data)
                                                 <tr>
-                                                    <td>{{ $client->id }}</td>
-                                                    <td>{{ $client->first_name }} {{ $client->last_name }}</td>
-                                                    <td>{{ $client->id_number }}</td>
-                                                    <td>{{ $client->phone }}</td>
-                                                    <td>{{ $client->email }}</td>
-                                                    <td>{{ $client->gender }}</td>
-                                                    <td>{{ $client->location }}</td>
+                                                    <td> </td>
+                                                    <td>{{ $data->first_name }} {{ $data->last_name }}</td>
+                                                    <td>{{ $data->id_number }}</td>
+                                                    
+                                                    <td>{{ $data->loan_id }}</td>
+                                                    <td>{{ $data->loan_applied }}</td>
+                                                    <td>{{ $data->loan_status }}</td>
+                                                    <td>{{ $data->amount_approved }}</td>
+                                                    <td>{{ $data->loan_approver }}</td>
                                                 </tr>
                                             @endforeach
                                     </tbody>

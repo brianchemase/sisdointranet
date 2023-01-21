@@ -29,7 +29,12 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
 
     Route::get('/', [AccountsController::class, 'index'])->name('AccountsHome');
     Route::get('/ClientsList', [AccountsController::class, 'clients_list'])->name('clientslist');
+    Route::get('/NewClientRegister', [AccountsController::class, 'newclientregister'])->name('registernewclient');
+    Route::get('/LoanedClientsList', [AccountsController::class, 'loaned_list'])->name('loanedclientslist');
     Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
+
+    //logout
+    Route::get('/accounts/logout', [AuthenticationController::class, 'logout'])->name('signout');
 
     Route::get('/blank', [AccountsController::class, 'blank'])->name('Accountsblank');
     Route::get('/forms', [AccountsController::class, 'forms'])->name('Accountsform');

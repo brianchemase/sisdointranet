@@ -39,6 +39,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="{{route('clientslist')}}">Clients List</a>
+                        <a class="collapse-item" href="{{route('registernewclient')}}">Register Client</a>
+                        <a class="collapse-item" href="{{route('loanedclientslist')}}">Loaned Clients List</a>
                         <a class="collapse-item" href="{{route('AccountsTables')}}">Table</a>
                         <a class="collapse-item" href="{{route('Accountsblank')}}">Blank</a>
                         <a class="collapse-item" href="{{route('Accountsform')}}">Forms</a>

@@ -59,6 +59,17 @@ class AuthenticationController extends Controller
 
         
     }
+    public function logout()
+    {
+
+        if(session()->has('loggeduserid')){
+            session()->pull('loggeduserid');
+            session()->pull('username');
+            session()->pull('station');
+            session()->pull('dept');
+            return redirect('/auth/login');
+        }
+    }
 
 
 }
