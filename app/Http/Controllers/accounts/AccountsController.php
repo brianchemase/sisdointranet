@@ -5,6 +5,7 @@ namespace App\Http\Controllers\accounts;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccountsController extends Controller
 {
@@ -105,5 +106,13 @@ class AccountsController extends Controller
 			$err = curl_error($ch);
 			curl_close($ch);
 
+    }
+	public function clients_list()
+    {
+
+
+		$clients=DB::table('clients_data')->get();
+
+        return view ('accounts.clientstables', compact('clients'));
     }
 }

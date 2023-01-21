@@ -1,10 +1,11 @@
+<!-- {{asset('dashboard/')}} -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('AccountsHome')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <!-- <i class="fas fa-laugh-wink"></i> -->
-                    <img src="logo/sisdologo.png" alt="logo" width="50" height="60">
+                    <img src="{{asset('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
                 </div>
                 <div class="sidebar-brand-text mx-3">SISDO INTRANET <sup>NGO</sup></div>
             </a>
@@ -37,6 +38,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="{{route('clientslist')}}">Clients List</a>
                         <a class="collapse-item" href="{{route('AccountsTables')}}">Table</a>
                         <a class="collapse-item" href="{{route('Accountsblank')}}">Blank</a>
                         <a class="collapse-item" href="{{route('Accountsform')}}">Forms</a>

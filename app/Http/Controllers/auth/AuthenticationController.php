@@ -30,13 +30,21 @@ class AuthenticationController extends Controller
                 if ($user->dept=='accounts')
                 {
                     $request->session()->put('loggeduserid', $user->id);
+                    $request->session()->put('username', $user->names);
+                    $request->session()->put('station', $user->station);
+                    $request->session()->put('dept', $user->dept);
                     return redirect ('accounts');
                 }
 
                 elseif ($user->dept=='ICT')
                 {
                     $request->session()->put('loggeduserid', $user->id);
+                    $request->session()->put('username', $user->names);
+                    $request->session()->put('station', $user->station);
+                    $request->session()->put('dept', $user->dept);
                     return redirect ('accounts');
+                }else {
+                    return back()->with('fail', 'Error!, Contact Admin To be mapped correctly .');
                 }
                 
                 

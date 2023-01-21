@@ -28,6 +28,7 @@ Route::post('/check', [AuthenticationController::class, 'checkauth'])->name('aut
 Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function() {
 
     Route::get('/', [AccountsController::class, 'index'])->name('AccountsHome');
+    Route::get('/ClientsList', [AccountsController::class, 'clients_list'])->name('clientslist');
     Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
 
     Route::get('/blank', [AccountsController::class, 'blank'])->name('Accountsblank');
