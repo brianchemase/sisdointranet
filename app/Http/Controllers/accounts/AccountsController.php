@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\accounts;
 use App\Models\ClientsData;
+use App\Models\LoanData;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class AccountsController extends Controller
     public function index()
     {
         $montly_repayments="";
+		$query="";
 
         $montly_repayments="250000";
         $lastMontRepayments="350000";
@@ -27,6 +29,9 @@ class AccountsController extends Controller
 
 		$clients_counts=ClientsData::count();
 
+		$total_loan_running = LoanData::where('loan_status', 'running')->sum('loan_approved');
+
+		//return $total_loan_running;
 
         return view('accounts.home' , 
         compact('montly_repayments', 'lastMontRepayments', 'clients_counts', 
