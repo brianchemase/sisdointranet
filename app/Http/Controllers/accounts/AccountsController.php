@@ -138,4 +138,43 @@ class AccountsController extends Controller
 
 		return view ('accounts.clientsloaned', compact('loaned'));
 	}
+
+	public function savenewclient(Request $request)
+	{
+		$request->validate([
+			'fname'=>'required',
+			//'mname'=>'required',
+			'lname'=>'required',
+			//'email'=>'required|email|unique:clients_data',
+			'gender'=>'required',
+			'phone'=>'required|unique:clients_data',
+			'location'=>'required',
+			//'station'=>'required',
+			'id_number'=>'required|unique:clients_data|min:5|max:12'
+	   ]);
+
+
+		//Insert data into database
+		$new_client = new ClientsData;
+		$new_client->first_name = $request->fname;
+		$new_client->middle_name = $request->mname;
+		$new_client->last_name = $request->lname;
+		//$new_client->station = $request->station;
+		$new_client->email = $request->email;
+		$new_client->phone = $request->phone;
+		$new_client->gender = $request->gender;
+		$new_client->location = $request->location;
+		$new_client->id_number = $request->id_number;
+		$save = $new_client->save();
+
+		
+
+		 if($save){
+		   //Mail::to($email)->send(new AccountRegistration($fname,$username));
+		   return back()->with('success','New client data has been successfuly added to Sisdo Intranet');
+		 }else{
+			 return back()->with('fail','Something went wrong, try again later or contact system admin');
+		 }
+	   //return $request;
+	}
 }
