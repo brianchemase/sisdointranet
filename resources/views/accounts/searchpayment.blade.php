@@ -33,7 +33,7 @@
             <form action="{{route('loanrepaymentsearch')}}" method="GET" autocomplete="off">
                   
                 <div class="input-group">
-                    <input type="text" class="form-control" name="q" placeholder="Search Customer Visit" required> 
+                    <input type="text" class="form-control" name="q" placeholder="Search Customer ID" required> 
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default">
                             <span class="glyphicon glyphicon-search"></span>
@@ -123,10 +123,10 @@
                           <thead>
                               <tr>
                                   <th>No</th>  
-                                  <th>Payment date</th>
                                   <th>Client's Names</th>
                                   <th>ID No</th>
                                   <th>LoanID</th>
+                                  <th>Payment date</th>
                                   <th>Prev balance</th>
                                   <th>Amount</th>
                                   <th>Paymode</th>
@@ -136,10 +136,10 @@
                           <tfoot>
                               <tr> 
                                   <th>No</th>  
-                                  <th>Payment date</th>
                                   <th>Client's Names</th>
                                   <th>ID No</th>
                                   <th>LoanID</th>
+                                  <th>Payment date</th>
                                   <th>Prev balance</th>
                                   <th>Amount</th>
                                   <th>Paymode</th>
@@ -186,10 +186,11 @@
                               ?> 
                               <tr class="odd gradeX"> 
                                   <td> {{$no++}}</td>    
-                                  <td> <?php echo $date;?></td>
+                                  
                                   <td> {{ $result->first_name}} {{ $result->last_name}}</td>
                                   <td> {{ $result->id_number}}</td>
                                   <td> {{ $result->loan_id}}</td>
+                                  <td> <?php echo $date;?></td>
                                   <td> {{ $result->prev_balance}}</td>
                                   <td> {{ $result->amount}}</td>
                                   <td> {{ $result->mode_of_payment}}</td>
