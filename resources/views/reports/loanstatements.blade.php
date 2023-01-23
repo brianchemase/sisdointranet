@@ -19,7 +19,7 @@
     <title>Loan Statements</title>
   </head>
   <body>
-  <!-- <img src="{{asset('logo/sisdologo.png')}}" alt="logo" width="50" height="60"> -->
+  <img src="{{asset('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
   
     <h2 class="mb-2 text-center" >Client Loan Statements</h2>
 

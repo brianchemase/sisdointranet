@@ -332,7 +332,7 @@ class AccountsController extends Controller
             $date="";
 
 
-		return view('reports.loanstatements', compact('results'));
+		//return view('reports.loanstatements', compact('results'));
 
 		$pdf = PDF::loadView('reports.loanstatements', compact('results') );
               return $pdf->stream();
