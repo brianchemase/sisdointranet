@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class AccountsController extends Controller
 {
@@ -302,5 +303,38 @@ class AccountsController extends Controller
 		 }else{
 			 return back()->with('fail','Something went wrong, try again later or contact system admin');
 		 }		
+	}
+	public function search_statement()
+	{
+		return view('accounts.loanstatements');
+	}
+
+	public function client_statement()
+	{
+
+
+			// $id_no=$_GET['q'];
+            // $details=$_GET['q'];
+
+			$id_no=32676639;
+			$details="32676639";
+
+           
+        
+            $results=DB::table('tbl_loan_repayments')
+            ->where('tbl_loan_repayments.id_number', 'LIKE','%'.$id_no.'%')
+            ->orwhere('phone','LIKE','%'.$details.'%')
+            ->orwhere('loan_id','LIKE','%'.$details.'%' )
+            ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
+            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
+			->orderBy('id', 'desc')
+            ->get();
+            $date="";
+
+
+		return view('reports.loanstatements', compact('results'));
+
+		$pdf = PDF::loadView('reports.loanstatements', compact('results') );
+              return $pdf->stream();
 	}
 }

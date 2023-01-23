@@ -57,7 +57,7 @@
                         <h6 class="collapse-header">Manage Loans:</h6>
                         <a class="collapse-item" href="{{route('loanrepaymentsearch')}}">Loan Repayment</a>
                         <a class="collapse-item" href="{{route('loanedclientslist')}}">Loaned Clients List</a>
-                        <a class="collapse-item" href="{{route('loanedclientslist')}}">Loan Statements</a>
+                        <a class="collapse-item" href="{{route('loanstatements')}}">Loan Statements</a>
                         <a class="collapse-item" href="{{route('AccountsTables')}}">Table</a>
                         <a class="collapse-item" href="{{route('Accountsblank')}}">Blank</a>
                         <a class="collapse-item" href="{{route('Accountsform')}}">Forms</a>

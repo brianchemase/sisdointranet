@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accounts\AccountsController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\auth\AuthenticationController;
 
 
@@ -24,6 +25,9 @@ Route::get('/', function () {
 Route::get('/auth/login', [AuthenticationController::class, 'logpage'])->name('loginPage');
 Route::post('/check', [AuthenticationController::class, 'checkauth'])->name('authenticate');
 
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('/loanstatementsreport', [AccountsController::class, 'client_statement'])->name('loanstatementsreport');
+
 
 Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function() {
 
@@ -38,6 +42,7 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::get('/LoanedClientsList', [AccountsController::class, 'loaned_list'])->name('loanedclientslist');
     Route::get('/loansearch', [AccountsController::class, 'loan_repayment'])->name('loanrepaymentsearch');
     Route::post('/RegisterLoanPayment', [AccountsController::class, 'register_loan_repayment'])->name('registerrepayment');
+    Route::get('/LoanStatementPage', [AccountsController::class, 'search_statement'])->name('loanstatements');
 
     
     Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
