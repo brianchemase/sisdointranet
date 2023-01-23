@@ -31,10 +31,10 @@
         <div class="card-body">
              <br>
             <div class="container">
-                <form action="{{route('loanrepaymentsearch')}}" method="GET" autocomplete="off">
-                    
+                <form action="{{route('loanstatementsreport')}}" method="post" autocomplete="off">
+                    @csrf
                     <div class="input-group">
-                        <input type="text" class="form-control" name="q" placeholder="Search Customer ID" required> 
+                        <input type="text" class="form-control" name="Customer_data" placeholder="Search Customer ID" required> 
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-default">
                                 <span class="glyphicon glyphicon-search"></span>

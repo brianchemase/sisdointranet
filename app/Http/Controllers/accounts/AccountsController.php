@@ -309,15 +309,18 @@ class AccountsController extends Controller
 		return view('accounts.loanstatements');
 	}
 
-	public function client_statement()
+	public function client_statement(Request $request)
 	{
 
 
 			// $id_no=$_GET['q'];
             // $details=$_GET['q'];
 
-			$id_no=32676639;
-			$details="32676639";
+			$id_no=$request->Customer_data;
+			$details=$request->Customer_data;
+
+			// $id_no=32676639;
+			// $details="32676639";
 
            
         
