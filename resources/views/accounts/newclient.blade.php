@@ -37,7 +37,7 @@
              <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="idnumber">Client ID</label>
-                        <input type="text" class="form-control" name="id_number" placeholder="Share Client number">
+                        <input type="text" class="form-control" name="id_number" placeholder="Share Client ID number">
                     </div>
 
                     <div class="form-group col-md-4">
