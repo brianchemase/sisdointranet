@@ -333,9 +333,22 @@ class AccountsController extends Controller
 			->orderBy('id', 'desc')
             ->get();
             $date="";
+			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
+			$clientf_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->first_name;
+			$clientl_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->last_name;
+			$loan_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_id;
+			$client_names=$clientf_name." ".$clientl_name;
 
 
-		//return view('reports.loanstatements', compact('results'));
+			$data = [
+				'client_names' => $client_names,
+				'loan_id_no' => $loan_id_no,
+				'client_id_no' => $client_id_no,
+				'officer' => 'System Admin',
+				'report_date' => date('d/m/Y h:m:s')
+			];
+
+		//return view('reports.loanstatements', $data, compact('results'));
 
 		$pdf = PDF::loadView('reports.loanstatements', compact('results') );
               return $pdf->stream();

@@ -26,7 +26,7 @@ Route::get('/auth/login', [AuthenticationController::class, 'logpage'])->name('l
 Route::post('/check', [AuthenticationController::class, 'checkauth'])->name('authenticate');
 
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
-Route::post('/loanstatementsreport', [AccountsController::class, 'client_statement'])->name('loanstatementsreport');
+
 
 
 Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function() {
@@ -43,6 +43,7 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::get('/loansearch', [AccountsController::class, 'loan_repayment'])->name('loanrepaymentsearch');
     Route::post('/RegisterLoanPayment', [AccountsController::class, 'register_loan_repayment'])->name('registerrepayment');
     Route::get('/LoanStatementPage', [AccountsController::class, 'search_statement'])->name('loanstatements');
+    Route::post('/loanstatementsreport', [AccountsController::class, 'client_statement'])->name('loanstatementsreport');
 
     
     Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
