@@ -350,7 +350,7 @@ class AccountsController extends Controller
 
 		//return view('reports.loanstatements', $data, compact('results'));
 
-		$pdf = PDF::loadView('reports.loanstatements', compact('results') );
+		$pdf = PDF::loadView('reports.loanstatements', $data, compact('results') );
               return $pdf->stream();
 	}
 }
