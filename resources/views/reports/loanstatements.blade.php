@@ -22,7 +22,7 @@
   <img src="{{asset('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
   
     <h2 class="mb-2 text-center" >Client Loan Statements</h2>
-    <P>Loan statement belonging to: {{ $client_names }} as of {{ $report_date }} <br> ID Number {{$client_id_no}} <br> Loan ID {{$client_id_no}}</P>
+    <P>Loan statement belonging to: {{ $client_names }} as of {{ $report_date }} <br> ID Number {{$client_id_no}} <br> Loan ID {{$loan_id_no}}</P>
 
                   <div class="table-condensed table-sm">
                     <table id="dataTable" class="table table-striped table-sm"  style="width:100%, font-size: 8px;">

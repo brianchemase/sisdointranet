@@ -23,7 +23,7 @@
   
 
   <div class="d-md-flex half">
-    <div class="bg" style="background-image: url('{{asset('logfiles/images/bg_2.jpg')}}');"></div>
+    <div class="bg" style="background-image: url('{{asset('logfiles/images/bg_3.jpg')}}');"></div>
     <div class="contents">
 
       <div class="container">
