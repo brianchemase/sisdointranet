@@ -47,6 +47,27 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loanprocessing"
+                    aria-expanded="true" aria-controls="loanprocessing">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Loan Processing</span>
+                </a>
+                <div id="loanprocessing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Loaning Progessing:</h6>
+                        <a class="collapse-item" href="{{route('loanrepaymentsearch')}}">Loan Application</a>
+                        <a class="collapse-item" href="{{route('pendingloanlist')}}">Pending Loans</a>
+                        <a class="collapse-item" href="{{route('loanstatements')}}">Process Loan</a>
+                        <a class="collapse-item" href="{{route('AccountsTables')}}">Approved Loans</a>
+                        <a class="collapse-item" href="{{route('Accountsblank')}}">Rejected Loans</a>
+                        <a class="collapse-item" href="{{route('Accountsform')}}">Forms</a>
+                        
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>

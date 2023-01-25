@@ -31,7 +31,7 @@
                 </div>
             @endif
             
-                <form action="{{route('saveclientdata')}}" method="post">
+            <form action="{{route('saveclientdata')}}" method="post">
                 @csrf
 
              <div class="form-row">

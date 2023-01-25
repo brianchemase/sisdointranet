@@ -40,6 +40,8 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
 
 
     Route::get('/LoanedClientsList', [AccountsController::class, 'loaned_list'])->name('loanedclientslist');
+    Route::get('/PendingLoanList', [AccountsController::class, 'pending_loan_list'])->name('pendingloanlist');
+
     Route::get('/loansearch', [AccountsController::class, 'loan_repayment'])->name('loanrepaymentsearch');
     Route::post('/RegisterLoanPayment', [AccountsController::class, 'register_loan_repayment'])->name('registerrepayment');
     Route::get('/LoanStatementPage', [AccountsController::class, 'search_statement'])->name('loanstatements');
