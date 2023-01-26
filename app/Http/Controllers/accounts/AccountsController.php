@@ -344,7 +344,7 @@ class AccountsController extends Controller
             ->orwhere('loan_id','LIKE','%'.$details.'%' )
             ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
             ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
-			->orderBy('id', 'desc')
+			->orderBy('id', 'asc')
             ->get();
             $date="";
 			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
