@@ -18,15 +18,16 @@
     
     </style>
   </head>
-  <body>
+  <body >
     
-    <div class="container-fluid">
-    
-    <!-- <img src="{{asset('logo/sisdo_letterhead.png.jpg')}}" alt="logo" width="100%" height="250"> -->
+    <div style="margin:-50;padding:0; width:800px;">
 
-    <img src="{{public_path('logo/sisdo_letterhead.png.jpg')}}" alt="logo" width="100%" height="250">
+    <img src="{{public_path('logo/sisdo_letterhead.png')}}" alt="logo" width="100%" height="250">
+    </div>
 
-    <div class="containter">
+    <div style="margin:0;padding:15;">
+    <br>
+    <br>
        <p><b>{{ $report_date }}<br><br>
        {{ $client_names }} </b><br><br>
        ID No. {{ $client_id_no }} <br><br>
@@ -46,16 +47,9 @@
     <p>{{ $officer }}</p>
     <p><b>{{ $designation }}</b></p>
 
-
-
     </div>
 
-
-
-
     </div>
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
