@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link href="{{asset('dashboard/css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('dashboard/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="{{public_path('dashboard/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{public_path('dashboard/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 <style>
 .table-condensed{
@@ -19,7 +19,7 @@
     <title>Loan Statements</title>
   </head>
   <body>
-  <img src="{{asset('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
+  <img src="{{public_path('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
   
     <h2 class="mb-2 text-center" >Client Loan Statements</h2>
     <P>Loan statement belonging to: {{ $client_names }} as of {{ $report_date }} <br> ID Number {{$client_id_no}} <br> Loan ID {{$loan_id_no}}</P>

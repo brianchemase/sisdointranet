@@ -388,41 +388,39 @@ class AccountsController extends Controller
 			'fname'=>'required',
 			//'mname'=>'required',
 			'lname'=>'required',
+			'client_id_no'=>'required',
+			'loan_balance'=>'required',
+			'loan_penalty'=>'required',
+			'date'=>'required',
+
 			//'email'=>'required|email|unique:clients_data',
-			'gender'=>'required',
-			'phone'=>'required|unique:clients_data',
-			'location'=>'required',
+			//'gender'=>'required',
+			//'phone'=>'required|unique:clients_data',
+			//'location'=>'required',
 			//'station'=>'required',
-			'id_number'=>'required|unique:clients_data|min:5|max:12'
+			//'id_number'=>'required|unique:clients_data|min:5|max:12'
 	   ]);
 
 
-		//Insert data into database
-		$new_client = new ClientsData;
-		$new_client->first_name = $request->fname;
-		$new_client->middle_name = $request->mname;
-		$new_client->last_name = $request->lname;
-		//$new_client->station = $request->station;
-		$new_client->email = $request->email;
-		$new_client->phone = $request->phone;
-		$new_client->gender = $request->gender;
-		$new_client->location = $request->location;
-		$new_client->id_number = $request->id_number;
-		//$save = $new_client->save();
 
-		
+		$client_names=$request->fname." ".$request->mname." ".$request->lname;
+		$client_id_no=$request->client_id_no;
+		$loan_due=$request->loan_balance;
+		$penalty=$request->loan_penalty;
+		$officer_names=$request->officer_name;
+		$designation=$request->officer_designation;
 
-		 if($save){
-		   //Mail::to($email)->send(new AccountRegistration($fname,$username));
-		   return back()->with('success','New client data has been successfuly added to Sisdo Intranet');
-		 }else{
-			 return back()->with('fail','Something went wrong, try again later or contact system admin');
-		 }
-	   //return $request;
-	}
 
-	public function demand_letter_page()
-	{
+		$data = [
+			'client_names' => $client_names,
+			'client_fnames' => $request->fname,
+			'loan_due' => $loan_due,
+			'penalty' => $penalty,
+			'client_id_no' => $client_id_no,
+			'officer' => $officer_names,
+			'designation' => $designation,
+			'report_date' => date('d/m/Y')
+		];
 		//return view ('reports.demandletter');
 
 		// $pdf = PDF::loadView( 'reports.demandletter', 
@@ -432,7 +430,44 @@ class AccountsController extends Controller
 		// 		'EmployeeNames', 'name' 
 		// 		)
 		// 	);
-			$pdf = PDF::loadView( 'reports.demandletter');
+			$pdf = PDF::loadView( 'reports.demandletter', $data);
+			return $pdf->stream();
+	}
+
+	public function demand_letter_page()
+	{
+
+
+		$client_names="JAPHET MUTUGI KIRUKI";
+		$client_id_no="28024958";
+		$loan_due="32450";
+		$penalty="1623";
+		$officer_names="George Gitau Muiru";
+		$designation="Credit Operations Manager";
+
+
+
+
+
+		$data = [
+			'client_names' => $client_names,
+			'loan_due' => $loan_due,
+			'penalty' => $penalty,
+			'client_id_no' => $client_id_no,
+			'officer' => $officer_names,
+			'designation' => $designation,
+			'report_date' => date('d/m/Y')
+		];
+		//return view ('reports.demandletter');
+
+		// $pdf = PDF::loadView( 'reports.demandletter', 
+		// 	compact(
+		// 		'startdate','stationname','enddate',
+		// 		'amountintext','amountinnumber','positionname',
+		// 		'EmployeeNames', 'name' 
+		// 		)
+		// 	);
+			$pdf = PDF::loadView( 'reports.demandletter', $data);
 			return $pdf->stream();
 		}
 }

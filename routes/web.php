@@ -53,7 +53,7 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
 
     //deman letters
     Route::get('/DemandLetter', [AccountsController::class, 'demand_letter_generation'])->name('DemandLetter');
-    Route::get('/GenerateDemandLetter', [AccountsController::class, 'generate_demand_letter'])->name('makeDemandLetter');
+    Route::post('/GenerateDemandLetter', [AccountsController::class, 'generate_demand_letter'])->name('makeDemandLetter');
 
     Route::get('/DemandLetterPage', [AccountsController::class, 'demand_letter_page'])->name('DemandLetterPage');//page
 
