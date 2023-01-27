@@ -145,6 +145,12 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
+                <a class="nav-link" href="{{route('DemandLetter')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Demand Letter Tab</span></a>
+            </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
