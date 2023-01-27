@@ -141,6 +141,15 @@ class AccountsController extends Controller
 		return view ('accounts.clientsloaned', compact('loaned'));
 	}
 
+	public function loaned_clients_data()
+	{
+		$loaned=DB::select("SELECT * from clients_data_names");
+
+		//return $loaned;
+
+		return view ('accounts.clientsdataloaned', compact('loaned'));
+	}
+
 	public function pending_loan_list()
 	{
 		$loaned=DB::select("
