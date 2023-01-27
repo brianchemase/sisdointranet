@@ -59,6 +59,7 @@
                         <a class="collapse-item" href="{{route('pendingloanlist')}}">Pending Loans</a>
                         <a class="collapse-item" href="{{route('loanstatements')}}">Process Loan</a>
                         <a class="collapse-item" href="{{route('AccountsTables')}}">Approved Loans</a>
+                        <a class="collapse-item" href="{{route('LoanedClients')}}">Loaned Clients(live)</a>
                         <a class="collapse-item" href="{{route('Accountsblank')}}">Rejected Loans</a>
                         <a class="collapse-item" href="{{route('Accountsform')}}">Forms</a>
                         
