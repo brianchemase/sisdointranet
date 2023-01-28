@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accounts\AccountsController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\LoaningController;
 use App\Http\Controllers\auth\AuthenticationController;
 
 
@@ -56,6 +57,10 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::post('/GenerateDemandLetter', [AccountsController::class, 'generate_demand_letter'])->name('makeDemandLetter');
 
     Route::get('/DemandLetterPage', [AccountsController::class, 'demand_letter_page'])->name('DemandLetterPage');//page
+
+    // loaning process
+    Route::get('/ValidateClient', [LoaningController::class, 'confirm_client'])->name('clientcheck');//check if client is registered
+    Route::post('/clientvalidationcheck', [LoaningController::class, 'client_validation'])->name('clientvalidation');
 
     //logout
     Route::get('/accounts/logout', [AuthenticationController::class, 'logout'])->name('signout');
