@@ -176,6 +176,90 @@
 </div>
 
 </div>
+<script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+  
+        var data = google.visualization.arrayToDataTable({{ Js::from($gender_chat) }});
+  
+        var options = {
+          title: 'Client Gender Distribution Chart',
+          is3D: true,
+        };
+  
+        var chart = new google.visualization.PieChart(document.getElementById('gender_distribution'));
+        chart.draw(data, options);
+      }
+    </script>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Client Gender Distribution Chart</h6>
+            </div>
+            <div class="card-body">
+                <div id="gender_distribution" style="width: 900px; height: 500px;" ></div>
+            </div>
+        </div>
+        
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Client Gender Distribution Chart</h6>
+            </div>
+            <div class="card-body">
+            <div id="LoanRepaymentsMonthly"></div>
+            @include('accounts.barline')
+            </div>
+        </div>
+        <script type="text/javascript">
+                var repayments =  {{ Js::from($repayments) }};
+            
+                Highcharts.chart('LoanRepaymentsMonthly', {
+                    title: {
+                        text: 'Loan Repayment for the Year, 2023'
+                    },
+                    subtitle: {
+                        text: 'Source: Sisdo Intranet Database'
+                    },
+                    xAxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Loan Repayments Amount'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            allowPointSelect: true
+                        }
+                    },
+                    series: [{
+                        name: 'Loan Repayments',
+                        data: repayments
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+            });
+            </script>
 
 <div class="row">
 
@@ -205,8 +289,12 @@
             <div class="card-body">
                 <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
+                    
                 </div>
             </div>
+           
+
+
         </div>
     </div>
 
@@ -249,6 +337,7 @@
                     </span>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -351,6 +440,7 @@
                     unDraw &rarr;</a>
             </div>
         </div>
+    
 
         <!-- Approach -->
         <div class="card shadow mb-4">

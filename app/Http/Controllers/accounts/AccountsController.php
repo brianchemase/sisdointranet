@@ -35,9 +35,51 @@ class AccountsController extends Controller
 
 		//return $total_loan_running;
 
+		// gender chat start
+		$gender_distribution = ClientsData::select(
+			DB::raw('SUM(CASE WHEN gender = "male" THEN 1 ELSE 0 END) as total_males'), 
+			DB::raw('SUM(CASE WHEN gender = "female" THEN 1 ELSE 0 END) as total_females')
+		)
+		
+		->get();
+
+			$gender_chat[] = ['Male','Female'];
+			foreach ($gender_distribution as $key => $value) {
+			$gender_chat[++$key] = ["Male", (int)$value->total_males];
+			$gender_chat[++$key] = ["Female", (int)$value->total_females];
+			}
+
+			//return $gender_chat;
+			//return view ('accounts.chat', compact('gender_chat'));
+			// gender chat end
+
+			//line chart start
+
+			$repayments = LoanRepayment::select(DB::raw("COUNT(*) as count"))
+                    ->whereYear('payment_date', date('Y'))
+                    ->groupBy(DB::raw("Month(payment_date)"))
+                    ->pluck('count');
+
+			$repayments = DB::table('tbl_loan_repayments')
+                ->select(DB::raw("MONTH(payment_date) AS repayment_month, YEAR(payment_date) AS repayment_year, SUM(amount) AS total_repayments"))
+				->whereYear('payment_date', date('Y'))
+                ->groupBy(DB::raw("repayment_month, repayment_year"))
+                ->orderBy("repayment_year")
+                ->orderBy("repayment_month")
+				->pluck('total_repayments');
+               //->get();
+
+				//return $repayments;
+
+            
+        //return view('accounts.barline', compact('repayments'));
+
+		// line chat end
+
+
         return view('accounts.home' , 
         compact('montly_repayments', 'lastMontRepayments', 'clients_counts', 
-        'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment'
+        'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments'
     
     ));
     }

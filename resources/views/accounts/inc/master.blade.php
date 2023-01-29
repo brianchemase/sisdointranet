@@ -24,6 +24,10 @@
 
      <!-- Custom styles for tables -->
      <link href="{{asset('dashboard/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     
+
+     
 
 </head>
 
@@ -95,6 +99,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('dashboard/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    
 
     <!-- Core plugin JavaScript-->
     <script src="{{asset('dashboard/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -116,6 +121,7 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('dashboard/js/demo/datatables-demo.js')}}"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
 
 </body>
 
