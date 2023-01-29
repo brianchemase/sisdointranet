@@ -122,6 +122,10 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('dashboard/js/demo/datatables-demo.js')}}"></script>
     <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 
 </body>
 
