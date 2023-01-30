@@ -27,6 +27,7 @@
                                             <th>Client email</th>
                                             <th>Gender</th>
                                             <th>Location</th>
+                                            <th>Image</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -38,6 +39,7 @@
                                             <th>Client email</th>
                                             <th>Gender</th>
                                             <th>Location</th>
+                                            <th>Image</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -51,6 +53,9 @@
                                                     <td>{{ $client->email }}</td>
                                                     <td>{{ $client->gender }}</td>
                                                     <td>{{ $client->location }}</td>
+                                                    <td>
+                                                    <img src="{{ url('storage/ppts/'.$client->passport) }}"  style="height: 100px; width: 150px;">
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                     </tbody>

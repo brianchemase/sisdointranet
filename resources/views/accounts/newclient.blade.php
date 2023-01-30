@@ -31,7 +31,7 @@
                 </div>
             @endif
             
-            <form action="{{route('saveclientdata')}}" method="post">
+            <form action="{{route('saveclientdata')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
              <div class="form-row">
@@ -82,7 +82,14 @@
                         <option value="Female">Female</option>
                     </select>
                  </div>
+
                     
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                        <label for="passpot">Passport Photo</label>
+                        <input type="file" class="form-control" name="ppt" required>
+                    </div>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Register client</button>

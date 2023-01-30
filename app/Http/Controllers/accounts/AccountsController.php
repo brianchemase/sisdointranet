@@ -27,20 +27,15 @@ class AccountsController extends Controller
         $expected_repayment=4000000;
         $pending_repayment=$expected_repayment-($mpesa_repayments+$bank_repayments);
 
-
-
 		$clients_counts=ClientsData::count();
-
 		$total_loan_running = LoanData::where('loan_status', 'running')->sum('loan_approved');
 
 		//return $total_loan_running;
-
 		// gender chat start
 		$gender_distribution = ClientsData::select(
 			DB::raw('SUM(CASE WHEN gender = "male" THEN 1 ELSE 0 END) as total_males'), 
 			DB::raw('SUM(CASE WHEN gender = "female" THEN 1 ELSE 0 END) as total_females')
 		)
-		
 		->get();
 
 			$gender_chat[] = ['Male','Female'];
@@ -172,6 +167,8 @@ class AccountsController extends Controller
 
 		$clients=DB::table('clients_data')->get();
 
+		//return $clients;
+
         return view ('accounts.clientstables', compact('clients'));
     }
 
@@ -225,6 +222,18 @@ class AccountsController extends Controller
 			'id_number'=>'required|unique:clients_data|min:5|max:12'
 	   ]);
 
+	   if ($request->hasFile('ppt')) {
+
+		$request->validate([
+			'image' => 'mimes:png,jpg,jpeg|max:2048' // Only allow .jpg, .bmp and .png file types.
+		]);
+
+
+		 // Save the file locally in the storage/public/ folder under a new folder named /ppts
+		 $request->ppt->store('ppts', 'public');
+
+
+
 
 		//Insert data into database
 		$new_client = new ClientsData;
@@ -237,6 +246,7 @@ class AccountsController extends Controller
 		$new_client->gender = $request->gender;
 		$new_client->location = $request->location;
 		$new_client->id_number = $request->id_number;
+		$new_client->passport = $request->ppt->hashName();
 		$save = $new_client->save();
 
 		
@@ -248,6 +258,7 @@ class AccountsController extends Controller
 			 return back()->with('fail','Something went wrong, try again later or contact system admin');
 		 }
 	   //return $request;
+		}
 	}
 
 	public function loan_repayment()
