@@ -54,7 +54,7 @@
                                                     <td>{{ $client->gender }}</td>
                                                     <td>{{ $client->location }}</td>
                                                     <td>
-                                                    <img src="{{ url('storage/ppts/'.$client->passport) }}"  style="height: 100px; width: 150px;">
+                                                        <img src="{{ url('storage/ppts/'.$client->passport) }}"  style="height: 100px; width: 150px;">
                                                     </td>
                                                 </tr>
                                             @endforeach
