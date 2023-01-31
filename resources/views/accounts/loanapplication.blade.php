@@ -91,24 +91,24 @@
                 <hr>
                 
 
-                <div class="form-row">
+                <div class="form-row" onload="loaning();">
                     <div class="form-group col-md-4">
                         <label for="field">Principle Amount</label>
-                        <input type="text" class="form-control" name="principleloan" placeholder="Loan Applied">
+                        <input type="text" class="form-control" name="principleloan" id="principal" onchange="loaning();" placeholder="Loan Applied">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="field">Insuarance</label>
-                        <input type="text" class="form-control" name="insuarance" placeholder="Insuarance Amount">
+                        <input type="text" class="form-control" name="insuarance" id="insuarance" placeholder="Insuarance Amount">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="field">Interest</label>
-                        <input type="text" class="form-control" name="interest" placeholder="Interest to pay">
+                        <input type="text" class="form-control" name="interest" id="interest" placeholder="Interest to pay">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="field">Loan Application Fee</label>
-                        <input type="text" class="form-control" name="laf" placeholder="Loan Application Fee">
+                        <input type="text" class="form-control" name="laf" id="Loanaf" placeholder="Loan Application Fee">
                     </div>
 
                     
@@ -128,6 +128,16 @@
                         <input type="date" class="form-control" name="application_date" placeholder="application Dates">
                     </div>
 
+                    <div class="form-group col-md-4">
+                        <label for="field">Monthly Instalments</label>
+                        <input type="text" class="form-control" name="installments" id="instalments" placeholder="Loan To repay">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="field">Loan Amount</label>
+                        <input type="text" class="form-control" name="totalrepayment" id="totalrepayment" placeholder="Loan To repay">
+                    </div>
+
                     
                 </div>
                 
@@ -138,6 +148,39 @@
 
             </div>
             </div>
+
+            <script>
+                function loaning(){
+                var p = document.getElementById("principal").value;
+                var insu="";
+                var interest="";
+                if (p <100001)
+                {
+                    var laf=1000;
+                }
+                else{
+                    var laf=2000;
+                }
+                
+                 var insu= parseFloat(p)*0.21;
+                 //console.log(insu);
+                var total_loan=+p + +insu;
+                var monthly_instalments=(total_loan)/12;
+                 document.getElementById("insuarance").value=insu;
+                 document.getElementById("Loanaf").value=laf;
+                 document.getElementById("totalrepayment").value=total_loan;
+                 document.getElementById("instalments").value=monthly_instalments;
+
+                
+                
+                
+                
+                //var insu = document.getElementById("principal").value;
+                //var inte = document.getElementById("principal").value;
+                //var p = document.getElementById("principal").value;
+
+                }
+            </script>
 
 
 
