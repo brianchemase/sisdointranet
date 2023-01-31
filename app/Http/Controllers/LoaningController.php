@@ -49,4 +49,10 @@ class LoaningController extends Controller
 
         return view('');
     }
+
+    public function loan_application_form()
+    {
+
+        return view('accounts.loanapplication');
+    }
 }

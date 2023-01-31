@@ -62,6 +62,10 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::get('/ValidateClient', [LoaningController::class, 'confirm_client'])->name('clientcheck');//check if client is registered
     Route::post('/clientvalidationcheck', [LoaningController::class, 'client_validation'])->name('clientvalidation');
 
+    //loan application
+    Route::get('/LoanApplicationForm', [LoaningController::class, 'loan_application_form'])->name('loanapplicationform');
+
+
     //logout
     Route::get('/accounts/logout', [AuthenticationController::class, 'logout'])->name('signout');
 
