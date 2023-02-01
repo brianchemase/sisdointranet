@@ -162,11 +162,14 @@
                     var laf=2000;
                 }
                 
-                 var insu= parseFloat(p)*0.21;
+                // var insu= parseFloat(p)*0.21;
+                 var insu= parseFloat(p)*0.038;
+                 var interest=(+p + +insu)*0.21;
                  //console.log(insu);
-                var total_loan=+p + +insu;
+                var total_loan=+p + +insu + +interest;
                 var monthly_instalments=(total_loan)/12;
                  document.getElementById("insuarance").value=insu;
+                 document.getElementById("interest").value=interest;
                  document.getElementById("Loanaf").value=laf;
                  document.getElementById("totalrepayment").value=total_loan;
                  document.getElementById("instalments").value=monthly_instalments;
