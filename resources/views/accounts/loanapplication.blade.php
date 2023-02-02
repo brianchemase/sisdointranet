@@ -31,7 +31,7 @@
                 </div>
             @endif
             
-            <form action="{{route('saveclientdata')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('saveloanapplication')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
              <div class="form-row">
@@ -162,7 +162,6 @@
                     var laf=2000;
                 }
                 
-                // var insu= parseFloat(p)*0.21;
                  var insu= parseFloat(p)*0.038;
                  var interest=(+p + +insu)*0.21;
                  //console.log(insu);
@@ -173,14 +172,6 @@
                  document.getElementById("Loanaf").value=laf;
                  document.getElementById("totalrepayment").value=total_loan;
                  document.getElementById("instalments").value=monthly_instalments;
-
-                
-                
-                
-                
-                //var insu = document.getElementById("principal").value;
-                //var inte = document.getElementById("principal").value;
-                //var p = document.getElementById("principal").value;
 
                 }
             </script>

@@ -64,6 +64,7 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
 
     //loan application
     Route::get('/LoanApplicationForm', [LoaningController::class, 'loan_application_form'])->name('loanapplicationform');
+    Route::post('/SaveLoanApplication', [LoaningController::class, 'register_loan_application'])->name('saveloanapplication');//registration of a loan
 
 
     //logout
