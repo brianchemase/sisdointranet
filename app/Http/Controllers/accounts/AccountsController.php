@@ -203,7 +203,7 @@ class AccountsController extends Controller
 		ON c.id_number=l.id_number WHERE l.loan_status='pending';
 		");
 
-		return $loaned;
+		//return $loaned;
 
 		return view ('accounts.pendingloanlist', compact('loaned'));
 	}
