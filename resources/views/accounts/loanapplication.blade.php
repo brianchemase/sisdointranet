@@ -42,12 +42,24 @@
 
                     <div class="form-group col-md-4">
                         <label for="inputAddress">Registering officer</label>
-                        <input type="text" class="form-control" id="officer" placeholder="System Admin" readonly>
+                        <input type="text" class="form-control" id="officer" name="officer" value="{{ Session::get('username')}}" placeholder="{{ Session::get('username')}}" readonly>
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputAddress">residence</label>
+                        <label for="inputAddress">Client residence</label>
                         <input type="text" class="form-control" name="location" placeholder="Area of Residence">
                     </div>
+                    <div class="form-group col-md-4">
+                    <label for="inputState">Branch</label>
+                    <select name="branchcode" class="form-control">
+                        <option selected disabled>Choose Branch...</option>
+                        @forelse ($branches as $data)
+                            <option value="{{ $data->id }}">{{ $data->branch_name }}</option>
+                        @empty
+                            <option value="" disabled>No Active Station</option>
+                        @endforelse
+                                                
+                    </select>
+                 </div>
                 </div>
 
                 
@@ -115,11 +127,14 @@
 
                 <div class="form-group col-md-4">
                     <label for="inputState">Product Category</label>
-                    <select name="gender" class="form-control">
+                    <select name="product_id" class="form-control">
                         <option selected disabled>Choose...</option>
-                        <option value="livestock">Livestock</option>
-                        <option value="farminputs">Farm Inputs</option>
-                        <option value="biogass">Bio gas</option>
+                        @forelse ($products as $data)
+                            <option value="{{ $data->id }}">{{ $data->product_name }}</option>
+                        @empty
+                            <option value="" disabled>No Active Products</option>
+                        @endforelse
+                        
                     </select>
                  </div>
 

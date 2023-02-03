@@ -197,13 +197,13 @@ class AccountsController extends Controller
 	public function pending_loan_list()
 	{
 		$loaned=DB::select("
-		SELECT l.id_number, c.id_number, c.first_name, c.last_name, l.loan_id, l.application_date, l.loan_applied, l.loan_status 
+		SELECT l.id_number, c.id_number, c.first_name, c.last_name, l.loan_id, l.application_date, l.loan_applied, l.loan_status, l.principle, l.interest, l.monthly_installments 
 		FROM tbl_loaning AS l 
 		JOIN clients_data AS c
 		ON c.id_number=l.id_number WHERE l.loan_status='pending';
 		");
 
-		//return $loaned;
+		return $loaned;
 
 		return view ('accounts.pendingloanlist', compact('loaned'));
 	}
