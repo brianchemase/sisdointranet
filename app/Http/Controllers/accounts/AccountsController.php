@@ -9,23 +9,43 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Carbon\Carbon;
 
 class AccountsController extends Controller
 {
     //
     public function index()
     {
+
+		$currentMonth = Carbon::now()->month;
+        $currentYear = Carbon::now()->year;
+
         $montly_repayments="";
 		$query="";
 
         $montly_repayments="250000";
         $lastMontRepayments="350000";
-       // $clients_counts="125";
 
-        $mpesa_repayments=2000000;
-        $bank_repayments=1000000;
+        
+		$mpesa_repayments = DB::table('tbl_loan_repayments')
+            ->whereMonth('payment_date', $currentMonth)
+            ->whereYear('payment_date', $currentYear)
+			->where('mode_of_payment', 'mpesa')
+            ->sum('amount');
+
+		$bank_repayments = DB::table('tbl_loan_repayments')
+            ->whereMonth('payment_date', $currentMonth)
+            ->whereYear('payment_date', $currentYear)
+			->where('mode_of_payment', 'bank')
+            ->sum('amount');
+
         $expected_repayment=4000000;
         $pending_repayment=$expected_repayment-($mpesa_repayments+$bank_repayments);
+
+		$totalRepaymentAmount = DB::table('tbl_loan_repayments')->sum('amount');// sum of loan repayments
+		$total_loan_issued = DB::table('tbl_loaning')->sum('principle');// sum of loans issued
+		$Outstanding_loan_balance = $total_loan_issued-$totalRepaymentAmount;
+		//return $Outstanding_loan_balance;
 
 		$clients_counts=ClientsData::count();
 		$total_loan_running = LoanData::where('loan_status', 'running')->sum('loan_approved');
@@ -74,7 +94,7 @@ class AccountsController extends Controller
 
         return view('accounts.home' , 
         compact('montly_repayments', 'lastMontRepayments', 'clients_counts', 
-        'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments'
+        'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments','totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued'
     
     ));
     }

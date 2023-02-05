@@ -112,7 +112,7 @@
         <div class="card bg-primary text-white shadow">
             <div class="card-body">
                 
-                <div class="text-white-50 small">Day's Mpesa Repayment</div>
+                <div class="text-white-50 small">Month's Mpesa Repayment</div>
                 {{$mpesa_repayments}}
             </div>
         </div>
@@ -120,7 +120,7 @@
     <div class="col-lg-3 mb-4">
         <div class="card bg-success text-white shadow">
             <div class="card-body">
-            <div class="text-white-50 small">Day's Bank Repayment</div>
+            <div class="text-white-50 small">Month's Bank Repayment</div>
                 {{$bank_repayments}}
             </div>
         </div>
@@ -142,26 +142,29 @@
         </div>
     </div>
     <div class="col-lg-6 mb-4">
-        <div class="card bg-danger text-white shadow">
+        <div class="card bg-info text-white shadow">
             <div class="card-body">
-                Danger
-                <div class="text-white-50 small">#e74a3b</div>
+            <div class="text-white-50 small">Loan Repayments</div>
+                {{$totalRepaymentAmount}}
+                
             </div>
         </div>
     </div>
     <div class="col-lg-6 mb-4">
         <div class="card bg-secondary text-white shadow">
             <div class="card-body">
-                Secondary
-                <div class="text-white-50 small">#858796</div>
+            <div class="text-white-50 small">Outstanding Loan Balance</div>
+                {{$Outstanding_loan_balance}}
+                
             </div>
         </div>
     </div>
     <div class="col-lg-6 mb-4">
         <div class="card bg-light text-black shadow">
             <div class="card-body">
-                Light
-                <div class="text-black-50 small">#f8f9fc</div>
+            <div class="text-black-50 small">Total Loans Disbused</div>
+                {{$total_loan_issued}}
+                
             </div>
         </div>
     </div>
