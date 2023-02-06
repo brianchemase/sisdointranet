@@ -162,7 +162,7 @@
     <div class="col-lg-6 mb-4">
         <div class="card bg-light text-black shadow">
             <div class="card-body">
-            <div class="text-black-50 small">Total Loans Disbused</div>
+            <div class="text-black-50 small"> <b>Total Loans Disbused</b> </div>
                 {{number_format($total_loan_issued)}}
                 
             </div>
@@ -195,8 +195,8 @@
         chart.draw(data, options);
       }
     </script>
-
-        <div class="card shadow mb-4">
+        <div class="col-xl-12 col-lg-5">
+        <div class="card shadow mb-4" >
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Client Gender Distribution Chart</h6>
             </div>
@@ -204,6 +204,7 @@
                 <div id="gender_distribution" style="width: 900px; height: 500px;" ></div>
             </div>
         </div>
+    </div>
         
 
         <div class="card shadow mb-4">

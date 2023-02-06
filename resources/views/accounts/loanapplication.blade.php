@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputAddress">Client residence</label>
-                        <input type="text" class="form-control" name="location" placeholder="Area of Residence">
+                        <input type="text" class="form-control" name="location" placeholder="Area of Residence" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                     <div class="form-group col-md-4">
                     <label for="inputState">Branch</label>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="names">Guarantor's Full Names</label>
-                        <input type="text" class="form-control" name="fgnames" placeholder="Guarantor's Full names (Mandatory)" required>
+                        <input type="text" class="form-control" name="fgnames" placeholder="Guarantor's Full names (Mandatory)" onkeyup="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="names">Guarantor's Phone</label>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="names">Guarantor's Full Names</label>
-                        <input type="text" class="form-control" name="sgnames" placeholder="Guarantor's Full names (Mandatory)" required>
+                        <input type="text" class="form-control" name="sgnames" placeholder="Guarantor's Full names (Mandatory)" onkeyup="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="names">Guarantor's Phone</label>

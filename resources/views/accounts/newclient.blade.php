@@ -46,22 +46,22 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputAddress">residence</label>
-                        <input type="text" class="form-control" name="location" placeholder="Area of Residence">
+                        <input type="text" class="form-control" name="location" placeholder="Area of Residence" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="names">First Name </label>
-                        <input type="text" class="form-control" name="fname" placeholder="First Name (Mandatory)">
+                        <input type="text" class="form-control" name="fname" placeholder="First Name (Mandatory)" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="names">Middle Name</label>
-                        <input type="text" class="form-control" name="mname" placeholder="Middle Name (optional)">
+                        <input type="text" class="form-control" name="mname" placeholder="Middle Name (optional)" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="names">Last Name</label>
-                        <input type="text" class="form-control" name="lname" placeholder="Last Name (Mandatory)">
+                        <input type="text" class="form-control" name="lname" placeholder="Last Name (Mandatory)" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                 </div>
                 <div class="form-row">
