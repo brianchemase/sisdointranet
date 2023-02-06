@@ -23,7 +23,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Loan Repayments (Monthly)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">KES {{$montly_repayments}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">KES {{number_format($montly_repayments)}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -41,7 +41,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Loan Repayments (last Month)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">KES {{$lastMontRepayments}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">KES {{number_format($lastMontRepayments)}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -88,7 +88,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Clients List</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$clients_counts}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($clients_counts)}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -113,7 +113,7 @@
             <div class="card-body">
                 
                 <div class="text-white-50 small">Month's Mpesa Repayment</div>
-                {{$mpesa_repayments}}
+                {{number_format($mpesa_repayments)}}
             </div>
         </div>
     </div>
@@ -121,7 +121,7 @@
         <div class="card bg-success text-white shadow">
             <div class="card-body">
             <div class="text-white-50 small">Month's Bank Repayment</div>
-                {{$bank_repayments}}
+                {{number_format($bank_repayments)}}
             </div>
         </div>
     </div>
@@ -129,7 +129,7 @@
         <div class="card bg-info text-white shadow">
             <div class="card-body">
             <div class="text-white-50 small">Day's Expected Repayment</div>
-                {{$expected_repayment}}
+                {{number_format($expected_repayment)}}
             </div>
         </div>
     </div>
@@ -137,7 +137,7 @@
         <div class="card bg-warning text-white shadow">
             <div class="card-body">
             <div class="text-white-50 small">Day's Pending Repayment</div>
-                {{$pending_repayment}}
+                {{number_format($pending_repayment)}}
             </div>
         </div>
     </div>
@@ -145,7 +145,7 @@
         <div class="card bg-info text-white shadow">
             <div class="card-body">
             <div class="text-white-50 small">Loan Repayments</div>
-                {{$totalRepaymentAmount}}
+                {{number_format($totalRepaymentAmount)}}
                 
             </div>
         </div>
@@ -154,7 +154,7 @@
         <div class="card bg-secondary text-white shadow">
             <div class="card-body">
             <div class="text-white-50 small">Outstanding Loan Balance</div>
-                {{$Outstanding_loan_balance}}
+                {{number_format($Outstanding_loan_balance)}}
                 
             </div>
         </div>
@@ -163,7 +163,7 @@
         <div class="card bg-light text-black shadow">
             <div class="card-body">
             <div class="text-black-50 small">Total Loans Disbused</div>
-                {{$total_loan_issued}}
+                {{number_format($total_loan_issued)}}
                 
             </div>
         </div>
