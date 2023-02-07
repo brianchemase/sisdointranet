@@ -28,6 +28,7 @@
                                             <th>Gender</th>
                                             <th>Location</th>
                                             <th>Image</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -40,6 +41,7 @@
                                             <th>Gender</th>
                                             <th>Location</th>
                                             <th>Image</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -55,6 +57,10 @@
                                                     <td>{{ $client->location }}</td>
                                                     <td>
                                                         <img src="{{ url('storage/ppts/'.$client->passport) }}"  style="height: 100px; width: 150px;">
+                                                    </td>
+                                                    <td>
+                                                    <a href="#viewModal{{$client->id}}" title="View boooking" data-toggle="modal" class="btn btn-success"><i class="fa fa-eye"></i> </a> 
+                                                    @include('accounts.modals.clientsView')
                                                     </td>
                                                 </tr>
                                             @endforeach

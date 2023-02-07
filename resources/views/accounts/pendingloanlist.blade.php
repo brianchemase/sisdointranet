@@ -24,10 +24,11 @@
                                             <th>Names</th>
                                             <th>ID Number</th>
                                             <th>LoadID</th>
+                                            <th>Application Date</th>
                                             <th>Amount Applied</th>
                                             <th>Status</th>
                                             <th>Amount Approved</th>
-                                            <th>Approval officer</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -36,10 +37,11 @@
                                             <th>Names</th>
                                             <th>ID Number</th>
                                             <th>LoadID</th>
+                                            <th>Application Date</th>
                                             <th>Amount Applied</th>
                                             <th>Status</th>
                                             <th>Amount Approved</th>
-                                            <th>Approval officer</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -51,10 +53,14 @@
                                                     <td>{{ $data->id_number }}</td>
                                                     
                                                     <td>{{ $data->loan_id }}</td>
+                                                    <td>{{ $data->application_date }}</td>
                                                     <td>{{ $data->loan_applied }}</td>
                                                     <td>{{ $data->loan_status }}</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>
+                                                        <a href="#approveloanmodal{{$data->loan_id}}" title="Approve Loan" data-toggle="modal" class="btn btn-success"><i class="fa fa-play"></i> Approve </a>
+                                                        <a href="#loanrejectionmodal{{$data->loan_id}}" title="Reject Loan" data-toggle="modal" class="btn btn-danger"><i class="fa fa-stop"></i> Decline </a>
+                                                    </td>
+                                                    @include('accounts.modals.loanprocessing')
                                                 </tr>
                                             @endforeach
                                     </tbody>

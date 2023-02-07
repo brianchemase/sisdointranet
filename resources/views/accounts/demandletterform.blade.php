@@ -52,6 +52,10 @@
                     <input type="text" class="form-control" name="client_id_no" placeholder="ID Number">
                     </div>
                     <div class="col">
+                    <input type="number" class="form-control" name="demand_no" placeholder="Enter demand Number">
+                    </div>
+                    
+                    <div class="col">
                     <input type="text" class="form-control" name="loan_balance" placeholder="Outstanding Loan">
                     </div>
                     <div class="col">
