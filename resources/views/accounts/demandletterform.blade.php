@@ -36,13 +36,13 @@
 
                 <div class="row">
                     <div class="col">
-                    <input type="text" class="form-control" name="fname" placeholder="First name">
+                    <input type="text" class="form-control" name="fname" placeholder="First name" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                     <div class="col">
-                    <input type="text" class="form-control" name="mname" placeholder="Middle name">
+                    <input type="text" class="form-control" name="mname" placeholder="Middle name" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                     <div class="col">
-                    <input type="text" class="form-control" name="lname" placeholder="Last name">
+                    <input type="text" class="form-control" name="lname" placeholder="Last name" onkeyup="this.value = this.value.toUpperCase();">
                     </div>
                 </div>
                 <br>

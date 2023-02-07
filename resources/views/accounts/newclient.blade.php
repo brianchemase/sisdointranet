@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Register client</button>
+                    <button type="submit" class="btn btn-primary">Register client</button>
                 </form>
                 </div>
 
