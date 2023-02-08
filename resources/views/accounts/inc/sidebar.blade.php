@@ -149,6 +149,28 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Demand Letter Tab</span></a>
             </li>
+            <!-- Nav Item - assets -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Assets Register</span></a>
+            </li>
+
+             <!-- Divider -->
+             <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                System Admins
+            </div>
+
+            <!-- Nav Item - users -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('ActiveStaffList')}}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>SISDO STAFF</span></a>
+            </li>
+
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
@@ -156,6 +178,13 @@
                     <span>Tables</span></a>
             </li>
 
+              <!-- Divider -->
+              <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Actions
+                </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="{{route('signout')}}">

@@ -99,11 +99,19 @@ class LoaningController extends Controller
         $applicationdate =$request->application_date;
         $new_date = str_replace("-", "", $applicationdate);
         $loan_id=$new_date.$rand_num;
+        $insuarance_status=$request->insuarance_status;
+
+        if($insuarance_status == "1")
+            {$insuarance_amount=$request->insuarance;}
+            else{
+                $insuarance_amount="0";
+            }
 
         //return $loan_id;
 
         $new_guarantors = new GuarantorsData;
         $new_guarantors->client_id=$request->id_number;
+        $new_guarantors->loan_id=$loan_id;
         $new_guarantors->guarantor_names=$request->fgnames;
         $new_guarantors->guarantor_id_number=$request->fgid;
         $new_guarantors->guarantor_phone=$request->fgphone;
@@ -123,7 +131,7 @@ class LoaningController extends Controller
         // $new_loan->loan_approved=$request->id_number;
             $new_loan->principle=$request->totalrepayment;// amount expencted to repay
             $new_loan->interest=$request->interest;//interest
-            $new_loan->insuarance=$request->insuarance;//insuarance
+            $new_loan->insuarance=$insuarance_amount;//insuarance
             $new_loan->laf=$request->laf;//loan application fee
             $new_loan->monthly_installments=$request->installments;//monthly installments
 

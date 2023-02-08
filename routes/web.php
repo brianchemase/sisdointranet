@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\accounts\AccountsController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\LoaningController;
+use App\Http\Controllers\StaffManagementController;
 use App\Http\Controllers\auth\AuthenticationController;
 
 
@@ -51,6 +52,9 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::post('/loanstatementsreport', [AccountsController::class, 'client_statement'])->name('loanstatementsreport');
 
     Route::get('/tables', [AccountsController::class, 'tables'])->name('AccountsTables');
+
+    //users tables
+    Route::get('/Sisdostafflist', [StaffManagementController::class, 'staff_list'])->name('ActiveStaffList');
 
     //deman letters
     Route::get('/DemandLetter', [AccountsController::class, 'demand_letter_generation'])->name('DemandLetter');

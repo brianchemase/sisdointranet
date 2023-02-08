@@ -139,6 +139,15 @@
                  </div>
 
                  <div class="form-group col-md-4">
+                    <label for="inputState">Insuarance Applicable</label>
+                    <select name="insuarance_status" class="form-control">
+                        <option selected disabled>Choose...</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                 </div>
+
+                 <div class="form-group col-md-4">
                         <label for="email">Loan Application Date</label>
                         <input type="date" class="form-control" name="application_date" placeholder="application Dates">
                     </div>
