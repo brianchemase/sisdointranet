@@ -8,7 +8,8 @@
 <div id="LoanRepaymentsMonthly"></div>
 </body>
   
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+<script src="{{asset('dashboard/js/highcharts.js')}}"></script>
 <script type="text/javascript">
     var users =  {{ Js::from($repayments) }};
    
