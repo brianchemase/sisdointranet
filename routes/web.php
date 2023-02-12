@@ -28,6 +28,7 @@ Route::get('/auth/login', [AuthenticationController::class, 'logpage'])->name('l
 Route::post('/check', [AuthenticationController::class, 'checkauth'])->name('authenticate');
 
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('ClientProfile', [PDFController::class, 'client_profile']);
 
 
 

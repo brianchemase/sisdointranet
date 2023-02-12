@@ -19,4 +19,20 @@ class PDFController extends Controller
     
         return $pdf->download('codesolutionstuff.pdf');
     }
+    public function client_profile()
+    {
+
+        $data = [
+            'officer' => 'System Admin',
+            'title' => 'title',
+            'title' => 'title',
+            'title' => 'title',
+            'report_date' => date('d/m/Y')
+        ];
+
+       // return view('accounts.profile', $data);
+
+        $pdf = PDF::loadView('accounts.profile', $data );
+              return $pdf->stream();
+    }
 }
