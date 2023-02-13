@@ -99,6 +99,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="prev_bal">Payment Date</label>
+                            <input type="date" class="form-control" name="payment_date" placeholder="Payment Date">
+                        </div>
+
+                        <div class="form-group">
                             <label for="amount">Amount Paid</label>
                             <input type="text" class="form-control" name="amount" placeholder="Amount">
                         </div>

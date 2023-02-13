@@ -332,6 +332,7 @@ class AccountsController extends Controller
 			'phone'=>'required',
 			'prev_bal'=>'required',
 			'mode_of_payment'=>'required',
+			'payment_date'=>'required',
 			'amount'=>'required',
 			
 	   ]);
@@ -341,8 +342,15 @@ class AccountsController extends Controller
 	   $new_loan_amount=$prev_bal-$payment_received;
 	   $client_name=$request->client_name;
 	   $client_mobile=$request->phone;
+	   $date_of_payment=$request->payment_date;
 
-	   $date_of_payment = date('Y-m-d');
+
+	   $interest_amount=0.21*$request->amount;
+	   $Principle_amount=0.79*$request->amount;
+
+	  // return $interest_amount;
+
+	   //$date_of_payment = date('Y-m-d');
 
 
 		//Insert data into database
@@ -351,6 +359,8 @@ class AccountsController extends Controller
 		$register_payment->loan_id = $request->loan_id;
 		$register_payment->prev_balance = $request->prev_bal;
 		$register_payment->mode_of_payment = $request->mode_of_payment;
+		$register_payment->principle_amount = $Principle_amount;
+		$register_payment->interest_amount = $interest_amount;
 		$register_payment->amount = $request->amount;
 		$register_payment->payment_date = $date_of_payment;
 		$register_payment->running_balance = $new_loan_amount;
