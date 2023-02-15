@@ -187,17 +187,21 @@ class LoaningController extends Controller
             ->first();
 
 
+            
+
+            //return $prev_balance;
+
+            if ($results) {
+            
             $running_balance= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->running_balance;
 			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
 			$loan_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_id;
             $prev_balance= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->prev_balance;
 			$phone_no= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->phone;
 			$client_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->first_name;
-
-            //return $prev_balance;
-
-            if ($results) {
+            
                 return response()->json(['results' => $results]);
+                
             }
             
             // If the user is not found, return a 404 response
