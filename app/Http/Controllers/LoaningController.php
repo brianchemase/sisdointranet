@@ -177,7 +177,7 @@ class LoaningController extends Controller
            
         
             $results=DB::table('tbl_loan_repayments')
-            ->where('tbl_loan_repayments.id_number', 'LIKE','%'.$id_no.'%')
+            ->where('tbl_loan_repayments.id_number',$id_no)
             ->orwhere('phone','LIKE','%'.$details.'%')
             ->orwhere('loan_id','LIKE','%'.$details.'%' )
             ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
@@ -191,7 +191,7 @@ class LoaningController extends Controller
             }
             
             // If the user is not found, return a 404 response
-            return response()->json(['error' => 'User not found'], 404);
+            return response()->json(['error' => 'Data for user if not available'], 404);
 
 
            // return response()->json($results);
