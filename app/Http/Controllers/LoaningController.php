@@ -158,4 +158,42 @@ class LoaningController extends Controller
         $input = $request->all();
         return $input;
     }
+    public function clients_data_api()
+    {
+        $clients=DB::table('clients_data')->get();
+
+        return response()->json($clients);
+    }
+    public function loan_balance($id)
+    {
+            
+
+        //$id_no=$_GET['q'];
+        //$details=$_GET['q'];
+        
+       $id_no=$id;
+      $details=$id;
+
+           
+        
+            $results=DB::table('tbl_loan_repayments')
+            ->where('tbl_loan_repayments.id_number', 'LIKE','%'.$id_no.'%')
+            ->orwhere('phone','LIKE','%'.$details.'%')
+            ->orwhere('loan_id','LIKE','%'.$details.'%' )
+            ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
+            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
+			->orderBy('id', 'desc')
+           // ->get();
+            ->first();
+
+            if ($results) {
+                return response()->json(['results' => $results]);
+            }
+            
+            // If the user is not found, return a 404 response
+            return response()->json(['error' => 'User not found'], 404);
+
+
+           // return response()->json($results);
+    }
 }
