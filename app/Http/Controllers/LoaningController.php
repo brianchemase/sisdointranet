@@ -150,13 +150,9 @@ class LoaningController extends Controller
             return back()->with('error','An error occured. Contact System Admin ');
         }
 
-        
 
-
-        
-
-        $input = $request->all();
-        return $input;
+       // $input = $request->all();
+        //return $input;
     }
     public function clients_data_api()
     {
@@ -170,12 +166,9 @@ class LoaningController extends Controller
 
         //$id_no=$_GET['q'];
         //$details=$_GET['q'];
-        
-       $id_no=$id;
+      $id_no=$id;
       $details=$id;
-
-           
-        
+      
             $results=DB::table('tbl_loan_repayments')
             ->where('tbl_loan_repayments.id_number',$id_no)
             ->orwhere('phone','LIKE','%'.$details.'%')

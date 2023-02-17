@@ -30,7 +30,7 @@ class PDFController extends Controller
             'report_date' => date('d/m/Y')
         ];
 
-       // return view('accounts.profile', $data);
+        return view('accounts.profile', $data);
 
         $pdf = PDF::loadView('accounts.profile', $data );
               return $pdf->stream();

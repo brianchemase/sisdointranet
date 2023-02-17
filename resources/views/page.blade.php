@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Sisdo Intranet</title>
+    <title>Sisdo Intranet System</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('temp/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -614,7 +614,7 @@ https://templatemo.com/tm-563-seo-dream
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>Copyright © 2022 SISDO INTRANET., Ltd. All Rights Reserved. 
+          <p>Copyright © 2023 SISDO INTRANET., Ltd. All Rights Reserved. 
           
           <br>Mail website at  <a rel="nofollow" href="https://sisdo.co.ke" title="Main Website">www.sisdo.co.ke</a></p>
         </div>
