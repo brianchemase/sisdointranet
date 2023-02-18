@@ -20,11 +20,19 @@ class AccountsController extends Controller
 		$currentMonth = Carbon::now()->month;
         $currentYear = Carbon::now()->year;
 
+		// get the last month from the current date
+		$lastMonthdate = Carbon::now()->subMonth();
+
+		$lastMonth=$lastMonthdate->month;
+
+
+
+
         $montly_repayments="";
 		$query="";
 
-        $montly_repayments="250000";
-        $lastMontRepayments="350000";
+        //$montly_repayments="250000";
+       // $lastMontRepayments="350000";
 
         
 		$mpesa_repayments = DB::table('tbl_loan_repayments')
@@ -33,11 +41,28 @@ class AccountsController extends Controller
 			->where('mode_of_payment', 'mpesa')
             ->sum('amount');
 
+
+		$montly_repayments = DB::table('tbl_loan_repayments')
+            ->whereMonth('payment_date', $currentMonth)
+            ->whereYear('payment_date', $currentYear)
+			//->where('mode_of_payment', 'mpesa')
+            ->sum('amount');
+
 		$bank_repayments = DB::table('tbl_loan_repayments')
             ->whereMonth('payment_date', $currentMonth)
             ->whereYear('payment_date', $currentYear)
 			->where('mode_of_payment', 'bank')
             ->sum('amount');
+
+		$lastMontRepayments = DB::table('tbl_loan_repayments')
+            ->whereMonth('payment_date', $lastMonth)
+            ->whereYear('payment_date', $currentYear)
+			//->where('mode_of_payment', 'mpesa')
+            ->sum('amount');
+
+			//return $mpesa_repayments;
+
+		//$montly_repayments=$mpesa_repayments+$bank_repayments;
 
         $expected_repayment=4000000;
         $pending_repayment=$expected_repayment-($mpesa_repayments+$bank_repayments);
@@ -307,8 +332,8 @@ class AccountsController extends Controller
 			$running_balance= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->running_balance;
 			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
 			$loan_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_id;
-			$phone_no= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->phone;
-			$client_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->first_name;
+			$phone_no= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->phone;
+			$client_name= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->first_name;
 
 			//return $phone_no;
 
