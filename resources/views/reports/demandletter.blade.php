@@ -35,7 +35,7 @@
        
        </p>
 
-    <p > <u><b>REF: DEMAND LETTER</b></u></p>
+    <p > <u><b>REF: {{ $demand_no }} DEMAND LETTER</b></u></p>
     <p align="justify">We are writing in reference to the loan advanced to you by SISDO and payment not being received.</P>
     <p align="justify">We hereby demand your outstanding loan arrears of <b> Ksh. {{ $loan_due }}/=</b>  plus a penalty of <b> Ksh. {{ $penalty }}/=</b> within seven days (7) from the date indicated above. Failure to which we will have no option but to execute recovery measures of the whole outstanding balance both principle and interest plus any other cost which may be incurred without further notice.</P>
     <p align="justify">Also note we reserve the right to commence legal proceedings and this letter may be tendered in court as evidence of your failure to pay.  Legal action may result in you having to pay legal costs, interest and could impact on your credit history. </P>

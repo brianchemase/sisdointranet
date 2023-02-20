@@ -6,9 +6,8 @@
 
 <div class="container-fluid">
  <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">SISDO Pening Loan Applications List</h1>
-                    <p class="mb-4">A table showing a list of all pening loan applications made by clients on the SISDO Intranet <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+            <h1 class="h3 mb-2 text-gray-800">SISDO Pending Loan Applications List</h1>
+                    <p class="mb-4">A table showing a list of all pending loan applications made by clients on the SISDO Intranet</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

@@ -203,4 +203,42 @@ class LoaningController extends Controller
 
            // return response()->json($results);
     }
+    public function running_loans()
+    {
+        $running_loans1=DB::select("
+		SELECT t1.id_number, t1.loan_id, t1.prev_balance, t1.payment_date, t1.mode_of_payment,
+        t1.amount, t1.running_balance, c.id_number, c.first_name, c.last_name, c.phone
+        FROM tbl_loan_repayments AS t1
+        JOIN clients_data AS c
+            ON c.id_number=t1.id_number
+            INNER JOIN (
+            SELECT loan_id, MAX(id) AS max_id
+            FROM tbl_loan_repayments
+            GROUP BY loan_id
+            ) t2
+            ON t1.loan_id = t2.loan_id AND t1.id = t2.max_id
+            
+            ORDER BY t1.loan_id, t1.id;
+
+		");
+
+       // return $running_loans;
+
+        $running_loans = DB::table('tbl_loan_repayments as t1')
+            ->join('clients_data as c', 'c.id_number', '=', 't1.id_number')
+            ->join(DB::raw('(SELECT loan_id, MAX(id) AS max_id FROM tbl_loan_repayments GROUP BY loan_id) as t2'), function ($join) {
+                $join->on('t1.loan_id', '=', 't2.loan_id')
+                     ->on('t1.id', '=', 't2.max_id');
+            })
+            ->select('t1.id_number', 't1.loan_id', 't1.prev_balance', 't1.amount as amount', 't1.mode_of_payment', 't1.payment_date', 't1.running_balance', 'c.id_number', 'c.first_name', 'c.last_name', 'c.phone')
+            ->where('t1.running_balance', '>', 0)
+            //->orderBy('t1.running_balance')
+            ->orderBy('t1.id')
+            ->orderBy('t1.loan_id')
+            ->get();
+
+
+            return view ('accounts.runningloans', compact('running_loans'));
+        
+    }
 }

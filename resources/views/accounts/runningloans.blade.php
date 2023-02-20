@@ -6,14 +6,13 @@
 
 <div class="container-fluid">
  <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">SISDO Loaning Clients lIST</h1>
-                    <p class="mb-4">A table showing a list of all loaned clients on the SISDO Intranet <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+            <h1 class="h3 mb-2 text-gray-800">SISDO Running Loans lIST</h1>
+                    <p class="mb-4">A table showing a list of all running loans on the SISDO Intranet .</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">SISDO CLIENT LIST</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">SISDO RUNNING LOANS LIST</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -24,10 +23,10 @@
                                             <th>Names</th>
                                             <th>ID Number</th>
                                             <th>LoadID</th>
-                                            <th>Amount Applied</th>
-                                            <th>Status</th>
-                                            <th>Amount Approved</th>
-                                            <th>Approval officer</th>
+                                            <th>Client Contact</th>
+                                            <th>Last Payment Date</th>
+                                            <th>Amount</th>
+                                            <th>Balance</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -36,25 +35,24 @@
                                             <th>Names</th>
                                             <th>ID Number</th>
                                             <th>LoadID</th>
-                                            <th>Amount Applied</th>
-                                            <th>Status</th>
-                                            <th>Amount Approved</th>
-                                            <th>Approval officer</th>
+                                            <th>Client Contact</th>
+                                            <th>Last Payment Date</th>
+                                            <th>Amount</th>
+                                            <th>Balance</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 
-                                            @foreach ($loaned as $data)
+                                            @foreach ($running_loans as $data)
                                                 <tr>
-                                                    <td>{{ $loop->iteration }} </td>
+                                                    <td> {{ $loop->iteration }}</td>
                                                     <td>{{ $data->first_name }} {{ $data->last_name }}</td>
                                                     <td>{{ $data->id_number }}</td>
-                                                    
                                                     <td>{{ $data->loan_id }}</td>
-                                                    <td>{{ $data->loan_applied }}</td>
-                                                    <td>{{ $data->loan_status }}</td>
-                                                    <td>{{ $data->amount_approved }}</td>
-                                                    <td>{{ $data->loan_approver }}</td>
+                                                    <td>{{ $data->phone }}</td>
+                                                    <td>{{ $data->payment_date }}</td>
+                                                    <td>{{ $data->amount }}</td>
+                                                    <td>{{ $data->running_balance }}</td>
                                                 </tr>
                                             @endforeach
                                     </tbody>

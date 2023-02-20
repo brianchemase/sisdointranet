@@ -242,7 +242,8 @@ class AccountsController extends Controller
 	public function pending_loan_list()
 	{
 		$loaned=DB::select("
-		SELECT l.id_number, c.id_number, c.first_name, c.last_name, l.loan_id, l.application_date, l.loan_applied, l.loan_status, l.principle, l.interest, l.monthly_installments 
+		SELECT l.id_number, c.id_number, c.first_name, c.last_name, l.loan_id, l.application_date, l.loan_applied, 
+		l.loan_status, l.principle, l.interest, l.monthly_installments 
 		FROM tbl_loaning AS l 
 		JOIN clients_data AS c
 		ON c.id_number=l.id_number WHERE l.loan_status='pending';
@@ -315,6 +316,8 @@ class AccountsController extends Controller
          
             $id_no=$_GET['q'];
             $details=$_GET['q'];
+
+			//return $details;
            
         
             $results=DB::table('tbl_loan_repayments')
@@ -404,36 +407,36 @@ class AccountsController extends Controller
 
 
 
-			$smsdata=array(
-				"apikey" => $apikey,
-				"shortcode" => $shortcode,
-				"partnerID"=> $partnerID,
-				"mobile" => $client_mobile,
-				"message" => $message,
-				//"serviceId" => $serviceId,
-				//"response_type" => "json",
-				);
+			// $smsdata=array(
+			// 	"apikey" => $apikey,
+			// 	"shortcode" => $shortcode,
+			// 	"partnerID"=> $partnerID,
+			// 	"mobile" => $client_mobile,
+			// 	"message" => $message,
+			// 	//"serviceId" => $serviceId,
+			// 	//"response_type" => "json",
+			// 	);
 				
-			$smsdata_string=json_encode($smsdata);
-			//echo $smsdata_string."\n";
+			// $smsdata_string=json_encode($smsdata);
+			// //echo $smsdata_string."\n";
 
-			$smsURL="https://sms.textsms.co.ke/api/services/sendsms/";
+			// $smsURL="https://sms.textsms.co.ke/api/services/sendsms/";
 
-			//POST
-			$ch=curl_init($smsURL);
-			curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"POST");
-			curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,0);
-			curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,0);
-			curl_setopt($ch,CURLOPT_POSTFIELDS,$smsdata_string);
-			curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-			curl_setopt($ch,CURLOPT_HTTPHEADER,array(
-				'Content-Type: application/json',
-				'Content-Length: '.strlen($smsdata_string)
-				)	
-			);
-			$response=curl_exec($ch);
-			$err = curl_error($ch);
-			curl_close($ch);
+			// //POST
+			// $ch=curl_init($smsURL);
+			// curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"POST");
+			// curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,0);
+			// curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,0);
+			// curl_setopt($ch,CURLOPT_POSTFIELDS,$smsdata_string);
+			// curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+			// curl_setopt($ch,CURLOPT_HTTPHEADER,array(
+			// 	'Content-Type: application/json',
+			// 	'Content-Length: '.strlen($smsdata_string)
+			// 	)	
+			// );
+			// $response=curl_exec($ch);
+			// $err = curl_error($ch);
+			// curl_close($ch);
 
 		   return back()->with('success','Loan Repayment successfully registered.');
 		 }else{
@@ -518,15 +521,41 @@ class AccountsController extends Controller
 		$officer_names=$request->officer_name;
 		$designation=$request->officer_designation;
 
+		
+
+		if($request->demand_no =="1")
+		{
+			$demand_no="1st";
+		}
+		elseif($request->demand_no =="2")
+		{
+			$demand_no="2nd";
+		}
+		elseif($request->demand_no =="3")
+		{
+			$demand_no="3rd";
+		}
+		elseif($request->demand_no =="4")
+		{
+			$demand_no="4th";
+		}
+		else{
+			$demand_no="";
+		}
+
+
+		//$demand_no="1st";
 
 		$data = [
 			'client_names' => $client_names,
 			'client_fnames' => $request->fname,
+			'demand_no' => $demand_no,
 			'loan_due' => $loan_due,
 			'penalty' => $penalty,
 			'client_id_no' => $client_id_no,
 			'officer' => $officer_names,
 			'designation' => $designation,
+			
 			'report_date' => date('d/m/Y')
 		];
 		//return view ('reports.demandletter');
@@ -552,10 +581,6 @@ class AccountsController extends Controller
 		$penalty="1623";
 		$officer_names="George Gitau Muiru";
 		$designation="Credit Operations Manager";
-
-
-
-
 
 		$data = [
 			'client_names' => $client_names,

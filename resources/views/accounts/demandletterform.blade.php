@@ -52,7 +52,7 @@
                     <input type="text" class="form-control" name="client_id_no" placeholder="ID Number">
                     </div>
                     <div class="col">
-                    <input type="number" class="form-control" name="demand_no" placeholder="Enter demand Number">
+                    <input type="number" class="form-control" name="demand_no" placeholder="Enter demand Number" required>
                     </div>
                     
                     <div class="col">
@@ -66,7 +66,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <input type="date" class="form-control" name="date" placeholder="Date" value="01/27/2023">
+                        <input type="date" class="form-control" name="date" placeholder="Date" required>
                     </div>
                     <div class="col">
                     <input type="text" class="form-control" name="officer_name" placeholder="Officer Names" value="George Gitau Muiru">

@@ -80,6 +80,7 @@
                         <a class="collapse-item" href="{{route('loanrepaymentsearch')}}">Loan Repayment</a>
                         <a class="collapse-item" href="{{route('loanedclientslist')}}">Loaned Clients List</a>
                         <a class="collapse-item" href="{{route('loanstatements')}}">Loan Statements</a>
+                        <a class="collapse-item" href="{{route('runningloanedclientslist')}}">Running Loans</a>
                         <a class="collapse-item" href="{{route('AccountsTables')}}">Table</a>
                         <a class="collapse-item" href="{{route('Accountsblank')}}">Blank</a>
                         <a class="collapse-item" href="{{route('Accountsform')}}">Forms</a>
