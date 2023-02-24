@@ -21,11 +21,11 @@
                     <label for="exampleFormControlSelect1">Get Clients data </label>
                     <select class="form-control" id="exampleFormControlSelect1" name="q">
                         <option selected disabled>Select Client ...</option>
-                        @forelse ($clients as $data)
+                            @forelse ($clients as $data)
                             <option value="{{ $data->id_number }}">{{ $data->first_name }} {{ $data->middle_name }} {{ $data->last_name }} - {{ $data->loan_id }}</option>
-                        @empty
+                            @empty
                             <option value="" disabled>No Active Loans</option>
-                        @endforelse
+                            @endforelse
                     </select>
                 </div>
                 </div>
