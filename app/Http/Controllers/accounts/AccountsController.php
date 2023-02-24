@@ -310,7 +310,6 @@ class AccountsController extends Controller
 	public function loan_repayment()
 	{
 
-
 		if(isset($_GET['q']))
         {
          
@@ -318,7 +317,6 @@ class AccountsController extends Controller
             $details=$_GET['q'];
 
 			//return $details;
-           
         
             $results=DB::table('tbl_loan_repayments')
             ->where('tbl_loan_repayments.id_number', 'LIKE','%'.$id_no.'%')
@@ -330,17 +328,11 @@ class AccountsController extends Controller
             ->get();
             $date="";
 
-			
-
 			$running_balance= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->running_balance;
 			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
 			$loan_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_id;
 			$phone_no= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->phone;
 			$client_name= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->first_name;
-
-			//return $phone_no;
-
-        //return $results;
 
 
             return view('accounts.searchpayment', ['results'=>$results], compact('date','running_balance','client_id_no','loan_id_no','phone_no','client_name'));

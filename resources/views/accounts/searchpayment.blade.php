@@ -41,9 +41,9 @@
                     </span>
                 </div>
             </form> 
-          </div>
+        </div>
 
-          <br/>
+        <br/>
         
           @if(isset($results))
 

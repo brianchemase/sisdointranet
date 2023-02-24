@@ -49,7 +49,8 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     //for repayments
     Route::get('/LoanedClients', [AccountsController::class, 'loaned_clients_data'])->name('LoanedClients');
 
-    Route::get('/loansearch', [AccountsController::class, 'loan_repayment'])->name('loanrepaymentsearch');
+    Route::get('/loansearch', [AccountsController::class, 'loan_repayment'])->name('loanrepaymentsearch');//searching data
+    Route::get('/loanfindsearch', [LoaningController::class, 'search_entry'])->name('findloanrepaymentsearch');//searching data
     Route::post('/RegisterLoanPayment', [AccountsController::class, 'register_loan_repayment'])->name('registerrepayment');
     Route::get('/LoanStatementPage', [AccountsController::class, 'search_statement'])->name('loanstatements');
     Route::post('/loanstatementsreport', [AccountsController::class, 'client_statement'])->name('loanstatementsreport');

@@ -241,4 +241,52 @@ class LoaningController extends Controller
             return view ('accounts.runningloans', compact('running_loans'));
         
     }
+    public function search_entry()
+    {
+
+       
+        //$clients=DB::table('clients_data')->get();
+
+        $clients=DB::table('tbl_loan_repayments AS l')
+        ->join('clients_data AS c', 'c.id_number', '=', 'l.id_number')
+        ->select('l.id_number', 'c.first_name', 'c.middle_name', 'c.last_name', 'l.loan_id')
+        ->groupBy('l.loan_id')
+        ->groupBy('l.loan_id', 'l.id_number', 'c.first_name', 'c.middle_name', 'c.last_name')
+        ->orderBy('c.first_name')
+        ->get();
+    
+        if(isset($_GET['q']))
+        {
+         
+            $id_no=$_GET['q'];
+            $details=$_GET['q'];
+
+			//return $details;
+        
+            $results=DB::table('tbl_loan_repayments')
+            ->where('tbl_loan_repayments.id_number', 'LIKE','%'.$id_no.'%')
+            ->orwhere('phone','LIKE','%'.$details.'%')
+            ->orwhere('loan_id','LIKE','%'.$details.'%' )
+            ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
+            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
+			->orderBy('id', 'desc')
+            ->get();
+            $date="";
+
+			$running_balance= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->running_balance;
+			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
+			$loan_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_id;
+			$phone_no= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->phone;
+			$client_name= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->first_name;
+
+
+            return view('accounts.filterpaymenttab', ['results'=>$results], compact( 'clients','date','running_balance','client_id_no','loan_id_no','phone_no','client_name'));
+        }
+       // return view('accounts.filterpageblank',compact('clients'));
+
+        else{
+            return view('accounts.filterpaymenttab',compact('clients'));
+        }
+    }
+
 }
