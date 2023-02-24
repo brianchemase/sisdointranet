@@ -7,32 +7,28 @@
  <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Search client for repayment</h1>
+<h1 class="h3 mb-4 text-gray-800">Filter client for repayment</h1>
 
 
 <div class="row">
     <div class="col-xl-12 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
-
                 <form class="form-inline" action="{{route('findloanrepaymentsearch')}}" method="GET" autocomplete="off">
-                <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                    <label for="exampleFormControlSelect1">Get Clients data </label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="q">
-                        <option selected disabled>Select Client ...</option>
-                            @forelse ($clients as $data)
-                            <option value="{{ $data->id_number }}">{{ $data->first_name }} {{ $data->middle_name }} {{ $data->last_name }} - {{ $data->loan_id }}</option>
-                            @empty
-                            <option value="" disabled>No Active Loans</option>
-                            @endforelse
-                    </select>
-                </div>
-                </div>
-                
-
-        
-                <button type="submit" class="btn btn-primary mb-2">Search</button>
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <label for="exampleFormControlSelect1">Get Clients Payment </label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="q">
+                                <option selected disabled>Select Client ...</option>
+                                    @forelse ($clients as $data)
+                                    <option value="{{ $data->id_number }}">{{ $data->first_name }} {{ $data->middle_name }} {{ $data->last_name }} - {{ $data->loan_id }}</option>
+                                    @empty
+                                    <option value="" disabled>No Active Loans</option>
+                                    @endforelse
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Get Details</button>
                 </form>
             </div>
         </div>
@@ -44,11 +40,18 @@
 
 <div class="card-body">           
 <!-- modal start -->
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Register Payment
-</button>
+<div class="row">
+    <div class="col-xl-12 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Register Payment
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
 
@@ -72,12 +75,7 @@
                 <input type="hidden" class="form-control" name="loan_id" placeholder="" value="{{$loan_id_no}}">
                 <input type="hidden" class="form-control" name="phone" placeholder="" value="{{$phone_no}}">
                 <input type="hidden" class="form-control" name="client_name" placeholder="" value="{{$client_name}}">
-            </div>
-
-            <!-- <div class="form-group">
-                <label for="names">Client name</label>
-                <input type="text" class="form-control" name="names" placeholder="name@example.com">
-            </div> -->
+            </div>    
 
             <div class="form-group">
                 <label for="prev_bal">Last Balance</label>
@@ -104,11 +102,11 @@
             </div>
    
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Register Loan Payment</button>
-    </div>
-    </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Register Loan Payment</button>
+        </div>
+        </div>
     </form>
 </div>
 </div>
@@ -149,7 +147,7 @@
               <tbody>
                   <?php $no=1 ?> 
                   @foreach ($results as $result)
-          <?php 
+            <?php 
                     
                       $date=$result->payment_date;
                       $application_date= date_create($date);
@@ -185,8 +183,7 @@
                   
                   ?> 
                   <tr class="odd gradeX"> 
-                      <td> {{$no++}}</td>    
-                      
+                      <td> {{$no++}}</td>        
                       <td> {{ $result->first_name}} {{ $result->last_name}}</td>
                       <td> {{ $result->id_number}}</td>
                       <td> {{ $result->loan_id}}</td>
