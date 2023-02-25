@@ -25,14 +25,8 @@ class AccountsController extends Controller
 
 		$lastMonth=$lastMonthdate->month;
 
-
-
-
         $montly_repayments="";
 		$query="";
-
-        //$montly_repayments="250000";
-       // $lastMontRepayments="350000";
 
         
 		$mpesa_repayments = DB::table('tbl_loan_repayments')
@@ -79,8 +73,7 @@ class AccountsController extends Controller
 		// gender chat start
 		$gender_distribution = ClientsData::select(
 			DB::raw('SUM(CASE WHEN gender = "male" THEN 1 ELSE 0 END) as total_males'), 
-			DB::raw('SUM(CASE WHEN gender = "female" THEN 1 ELSE 0 END) as total_females')
-		)
+			DB::raw('SUM(CASE WHEN gender = "female" THEN 1 ELSE 0 END) as total_females'))
 		->get();
 
 			$gender_chat[] = ['Male','Female'];
@@ -106,10 +99,16 @@ class AccountsController extends Controller
                 ->groupBy(DB::raw("repayment_month, repayment_year"))
                 ->orderBy("repayment_year")
                 ->orderBy("repayment_month")
-				->pluck('total_repayments');
+				->pluck('total_repayments' );
                //->get();
 
 				//return $repayments;
+		$monthly_payment_data=LoanRepayment::selectRaw('MONTH(payment_date) AS repayment_month, YEAR(payment_date) AS repayment_year, SUM(amount) AS total_repayments')
+			->groupBy('repayment_month', 'repayment_year')
+			->orderBy('repayment_year', 'desc')
+			->orderBy('repayment_month', 'desc')
+			->get();
+	
 
             
         //return view('accounts.barline', compact('repayments'));
@@ -119,7 +118,8 @@ class AccountsController extends Controller
 
         return view('accounts.home' , 
         compact('montly_repayments', 'lastMontRepayments', 'clients_counts', 
-        'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments','totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued'
+        'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments',
+		'totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued', 'monthly_payment_data'
     
     ));
     }

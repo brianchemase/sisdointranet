@@ -267,6 +267,50 @@
 
 <div class="row">
 
+<div class="col-xl-8 col-lg-7">
+    <!-- DataTales repayment -->
+            <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Income Monthly Analytics</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Month</th>
+                                            <th>Year</th>
+                                            <th>Payment</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Month</th>
+                                            <th>Year</th>
+                                            <th>Payment</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach ($monthly_payment_data as $data)   
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->repayment_month }} - {{ \Carbon\Carbon::createFromDate(null, $data->repayment_month, null)->format('F') }}</td>
+                                            <td>{{ $data->repayment_year }}</td>
+                                            <td align="right">{{ number_format($data->total_repayments) }}</td>
+                                            
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+
+
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
@@ -424,7 +468,7 @@
 
     </div>
 
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-12 mb-4">
 
         <!-- Illustrations -->
         <div class="card shadow mb-4">
@@ -459,6 +503,49 @@
                     Bootstrap framework, especially the utility classes.</p>
             </div>
         </div>
+         
+        <!-- DataTales Example -->
+         <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
     </div>
 </div>
