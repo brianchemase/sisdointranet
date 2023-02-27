@@ -249,6 +249,7 @@ class LoaningController extends Controller
 
         $clients=DB::table('tbl_loan_repayments AS l')
         ->join('clients_data AS c', 'c.id_number', '=', 'l.id_number')
+        ->where('tbl_loan_repayments.running_balance', '>', 1)
         ->select('l.id_number', 'c.first_name', 'c.middle_name', 'c.last_name', 'l.loan_id')
         ->groupBy('l.loan_id')
         ->groupBy('l.loan_id', 'l.id_number', 'c.first_name', 'c.middle_name', 'c.last_name')
