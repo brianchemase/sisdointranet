@@ -166,8 +166,8 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'brianchemo@gmail.com',
-            'cc' => 'brian.anikayi@sisdo.co.ke',
+           // 'to' => 'brianchemo@gmail.com',
+            'to' => 'brian.anikayi@sisdo.co.ke',
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'briananikayi@zohomail.com'),
