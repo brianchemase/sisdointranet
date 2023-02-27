@@ -167,6 +167,7 @@ return [
 
         'mail' => [
             'to' => 'brianchemo@gmail.com',
+            'cc' => 'brian.anikayi@sisdo.co.ke',
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'briananikayi@zohomail.com'),
