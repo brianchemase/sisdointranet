@@ -444,15 +444,8 @@ class AccountsController extends Controller
 	{
 
 
-			// $id_no=$_GET['q'];
-            // $details=$_GET['q'];
-
 			$id_no=$request->Customer_data;
 			$details=$request->Customer_data;
-
-			// $id_no=32676639;
-			// $details="32676639";
-
            
         
             $results=DB::table('tbl_loan_repayments')
@@ -466,15 +459,42 @@ class AccountsController extends Controller
             $date="";
 			$client_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->id_number;
 			$clientf_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->first_name;
+			$clientm_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->middle_name;
 			$clientl_name= ClientsData::orderBy('id', 'desc')->where('id_number', $details)->first()->last_name;
 			$loan_id_no= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_id;
-			$client_names=$clientf_name." ".$clientl_name;
+			//loan data
+			$application_date= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->application_date;//loan application date
+			$loan_applied= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_applied;//loan amount applied
+			$loan_application_fee= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->laf;//loan application fee
+			$monthly_installments= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->monthly_installments;//loan monthly repayment fee
+			$loan_to_repay= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->loan_approved;//loan amount to be paid fee
+			$disbusment_date= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->approval_date;//loan disbusment date
+			$expery_date= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->expery_date;//loan expiry date
+			$repayment_start_date= LoanData::orderBy('id', 'desc')->where('id_number', $details)->first()->repayment_start_date;//loan repayment_start_date date
+			
+			$branchname=DB::table('tbl_loaning')
+			->where('tbl_loaning.id_number', 'LIKE','%'.$id_no.'%')
+			->Join('tbl_branches as b', 'b.id', '=', 'tbl_loaning.branchcode')
+			->select ( 'b.id','b.branch_name')
+			->orderBy('id', 'asc')
+			->pluck('b.branch_name');
+            //->get();
 
+			$client_names=$clientf_name." ".$clientm_name." ".$clientl_name;
 
 			$data = [
 				'client_names' => $client_names,
 				'loan_id_no' => $loan_id_no,
 				'client_id_no' => $client_id_no,
+				'application_date' => $application_date,
+				'loan_applied' => $loan_applied,
+				'laf' => $loan_application_fee,
+				'monthly_installments' => $monthly_installments,
+				'loan_to_repay' => $loan_to_repay,
+				'disbusment_date' => $disbusment_date,
+				'expery_date' => $expery_date,
+				'repayment_start_date' => $repayment_start_date,
+				'branchname' => $branchname,
 				'officer' => 'System Admin',
 				'report_date' => date('d/m/Y h:m:s')
 			];

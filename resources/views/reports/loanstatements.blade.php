@@ -22,7 +22,48 @@
   <img src="{{public_path('logo/sisdologo.png')}}" alt="logo" width="50" height="60">
   
     <h2 class="mb-2 text-center" >Client Loan Statements</h2>
-    <P>Loan statement belonging to: {{ $client_names }} as of {{ $report_date }} <br> ID Number {{$client_id_no}} <br> Loan ID {{$loan_id_no}}</P>
+    <P>Loan statement belonging to: {{ $client_names }} as of {{ $report_date }} <br> ID Number {{$client_id_no}} Loan ID {{$loan_id_no}}</P>
+
+    <table class="table table-striped table-sm" style="width:100%, font-size: 8px;">
+       
+        <tbody>
+            <tr>
+                <th scope="row">Loan ID</th>
+                <td>{{$loan_id_no}}</td>
+                <th scope="row">Client ID Number</th>
+                <td>{{$client_id_no}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Client names</th>
+                <td colspan="3">{{ $client_names }}</td>
+               
+            </tr>
+            <tr>
+                <th scope="row">Loan Amount</th>
+                <td>{{  number_format($loan_applied) }}</td>
+                <th scope="row">Application Date:</th>
+                <td> {{ \Carbon\Carbon::parse($application_date)->format('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Branch</th>
+                <td>{{$branchname}}</td>
+                <th scope="row">Disbusment Date:</td>
+                <td> {{ \Carbon\Carbon::parse($disbusment_date)->format('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Repayment Amount</th>
+                <td>{{ number_format($loan_to_repay)}}</td>
+                <th scope="row">Monthly Installments:</td>
+                <td>{{  number_format($monthly_installments,2) }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Loan Application Fee</th>
+                <td>{{ number_format($laf)}}</td>
+                <th scope="row">Loan End Date:</td>
+                <td> {{ \Carbon\Carbon::parse($expery_date)->format('d-m-Y') }}</td>
+            </tr>
+        </tbody>
+        </table>
 
                   <div class="table-condensed table-sm">
                     <table id="dataTable" class="table table-striped table-sm"  style="width:100%, font-size: 8px;">
@@ -85,10 +126,10 @@
                                   <td> {{ $result->id_number}}</td>
                                   <td> {{ $result->loan_id}}</td>
                                   <td> <?php echo $date;?></td>
-                                  <td> {{ $result->prev_balance}}</td>
-                                  <td> {{ $result->amount}}</td>
+                                  <td> {{  number_format($result->prev_balance)}}</td>
+                                  <td> {{  number_format($result->amount)}}</td>
                                   <td> {{ $result->mode_of_payment}}</td>
-                                  <td> {{ $result->running_balance}}</td>
+                                  <td> {{  number_format($result->running_balance)}}</td>
                               </tr>
                               @endforeach
                           </tbody>
