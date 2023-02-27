@@ -50,9 +50,9 @@
                                                     <td>{{ $data->id_number }}</td>
                                                     <td>{{ $data->loan_id }}</td>
                                                     <td>{{ $data->phone }}</td>
-                                                    <td>{{ $data->payment_date }}</td>
-                                                    <td>{{ $data->amount }}</td>
-                                                    <td>{{ $data->running_balance }}</td>
+                                                    <td> {{ \Carbon\Carbon::parse($data->payment_date)->format('d-m-Y') }}</td>
+                                                    <td>{{ number_format($data->amount) }}</td>
+                                                    <td>{{ number_format($data->running_balance) }}</td>
                                                 </tr>
                                             @endforeach
                                     </tbody>

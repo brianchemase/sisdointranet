@@ -188,10 +188,10 @@
                       <td> {{ $result->id_number}}</td>
                       <td> {{ $result->loan_id}}</td>
                       <td> <?php echo $date;?></td>
-                      <td> {{ $result->prev_balance}}</td>
-                      <td> {{ $result->amount}}</td>
+                      <td> {{ number_format($result->prev_balance)}}</td>
+                      <td> {{ number_format($result->amount)}}</td>
                       <td> {{ $result->mode_of_payment}}</td>
-                      <td> {{ $result->running_balance}}</td>
+                      <td> {{ number_format($result->running_balance)}}</td>
                   </tr>
                   @endforeach
               </tbody>
