@@ -30,6 +30,9 @@ Route::post('/check', [AuthenticationController::class, 'checkauth'])->name('aut
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 Route::get('ClientProfile', [PDFController::class, 'client_profile']);
 
+Route::get('/aging_report', [LoaningController::class, 'generate_aging_report']);
+Route::get('/client_aging_report', [LoaningController::class, 'generate_client_aging_report']);
+
 
 
 Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function() {

@@ -9,6 +9,7 @@ use App\Models\LoanRepayment;
 use App\Models\GuarantorsData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class LoaningController extends Controller
 {
@@ -290,5 +291,105 @@ class LoaningController extends Controller
             return view('accounts.filterpaymenttab',compact('clients'));
         }
     }
+
+    public function generate_aging_report()
+    {
+        // Define aging periods
+        $agingPeriods = [
+            '30 days' => 30,
+            '60 days' => 60,
+            '90 days' => 90,
+            'Over 90 days' => 91 // This represents all repayments that are more than 90 days overdue
+        ];
+
+        // Retrieve loan repayment data
+        $loanRepayments = DB::table('tbl_loan_repayments')
+            ->select('amount', 'amount', 'payment_date')
+            ->get();
+
+        // Calculate aging
+        $currentDate = Carbon::now();
+        $agingData = [];
+        foreach ($loanRepayments as $repayment) {
+            $aging = $currentDate->diffInDays(Carbon::parse($repayment->payment_date));
+            foreach ($agingPeriods as $name => $days) {
+                if ($aging <= $days) {
+                    $agingData[$name][] = $repayment;
+                    break;
+                }
+            }
+        }
+
+        // Group data and calculate totals
+        $reportData = [];
+        foreach ($agingPeriods as $name => $days) {
+            $reportData[$name] = [
+                'count' => count($agingData[$name]),
+                'total' => collect($agingData[$name])->sum('amount')
+            ];
+        }
+
+        // Display report
+       // foreach ($reportData as $name => $data) {
+       //     echo "{$name}: {$data['count']} repayments, total amount: {$data['total']}<br>";
+       // }
+
+        return view('accounts.aging_report', compact('reportData'));
+
+    }
+
+    public function generate_client_aging_report()
+    {
+        // Get loan repayments and group by client
+            $loanRepayments = DB::table('tbl_loan_repayments')
+            ->join('clients_data', 'tbl_loan_repayments.id_number', '=', 'clients_data.id_number')
+            ->select('tbl_loan_repayments.*', 'clients_data.first_name', 'clients_data.middle_name', 'clients_data.last_name')
+            ->orderBy('clients_data.first_name')
+            ->get()
+            ->groupBy('first_name');
+
+            // Define aging periods and report data array
+            $agingPeriods = array(
+            '0-30 Days' => 30,
+            '31-60 Days' => 60,
+            '61-90 Days' => 90,
+            'Over 90 Days' => PHP_INT_MAX,
+            );
+
+            $reportData = array();
+
+            // Calculate report data for each client separately
+            foreach ($loanRepayments as $clientName => $repayments) {
+            // Initialize report data for this client
+            $clientReportData = array();
+            foreach ($agingPeriods as $periodName => $periodDays) {
+                $clientReportData[$periodName] = array(
+                    'count' => 0,
+                    'total' => 0,
+                );
+            }
+
+            // Calculate report data for each repayment
+            foreach ($repayments as $repayment) {
+                $daysAgo = Carbon::parse($repayment->payment_date)->diffInDays();
+                foreach ($agingPeriods as $periodName => $periodDays) {
+                    if ($daysAgo <= $periodDays) {
+                        $clientReportData[$periodName]['count']++;
+                        $clientReportData[$periodName]['total'] += $repayment->amount;
+                        break;
+                    }
+                }
+            }
+
+            // Add report data for this client to the overall report data array
+            $reportData[$clientName] = $clientReportData;
+            }
+
+            // Return report data to view
+            return view('accounts.clientaging_report', ['reportData' => $reportData]);
+
+        
+    }
+    
 
 }
