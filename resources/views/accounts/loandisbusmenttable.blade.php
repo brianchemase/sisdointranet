@@ -8,7 +8,6 @@
  <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">SISDO Loan Monthly Loan Disbusment</h1>
                     <p class="mb-4">A table showing a list of all monthly disbusment loans on the SISDO Intranet .</p>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -47,7 +46,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
 @endsection

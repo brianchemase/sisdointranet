@@ -242,6 +242,47 @@ class LoaningController extends Controller
             return view ('accounts.runningloans', compact('running_loans'));
         
     }
+    public function monthly_loan_repayments()
+    {
+        if(isset($_GET['m']))
+        {
+         
+            $filter_month=$_GET['m'];
+            $filter_year=$_GET['y'];
+
+            $current_month= $filter_month;
+            $current_year = $filter_year;
+
+            //return $current_year;
+
+
+        } else{
+
+            $current_month = date('m');
+            //$current_month = 2;
+            $current_year = date('Y');
+            //return $current_year;
+        }
+
+       
+        
+        $running_loans = DB::table('tbl_loan_repayments as t1')
+            ->join('clients_data as c', 'c.id_number', '=', 't1.id_number')
+            ->join(DB::raw('(SELECT loan_id, MAX(id) AS max_id FROM tbl_loan_repayments GROUP BY loan_id) as t2'), function ($join) {
+                $join->on('t1.loan_id', '=', 't2.loan_id')
+                     ->on('t1.id', '=', 't2.max_id');
+            })
+            ->select('t1.id_number', 't1.loan_id', 't1.prev_balance', 't1.amount as amount', 't1.mode_of_payment', 't1.payment_date', 't1.running_balance', 'c.id_number', 'c.first_name', 'c.last_name', 'c.phone')
+            ->where('t1.running_balance', '>', 0)
+            ->whereYear('t1.payment_date', '=', $current_year)
+            ->whereMonth('t1.payment_date', '=', $current_month)
+            ->orderBy('t1.id')
+            ->orderBy('t1.loan_id')
+            ->get();
+        
+            return view ('accounts.monthlyloanrepayments', compact('running_loans' , 'current_month', 'current_year' ));
+        
+    }
     public function loan_repayments_summary()
     {
         $monthly_payment_data=LoanRepayment::selectRaw('MONTH(payment_date) AS repayment_month, YEAR(payment_date) AS repayment_year, SUM(amount) AS total_repayments')

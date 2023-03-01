@@ -37,9 +37,9 @@
 
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
                 </form>
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>

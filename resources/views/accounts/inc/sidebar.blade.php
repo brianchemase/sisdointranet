@@ -110,8 +110,8 @@
                         <h6 class="collapse-header">Custom Utilities:</h6>
                         <a class="collapse-item" href="{{route('monthlyloandisbusments')}}">Loan Disbusment Summary</a>
                         <a class="collapse-item" href="{{route('monthlyrepayments')}}">Loan Repayment Summary</a>
-                        <a class="collapse-item" href="#">Animations</a>
-                        <a class="collapse-item" href="#">Other</a>
+                        <a class="collapse-item" href="{{route('monthlyloanrepaymentlist')}}">Repayment Summary</a>
+                        
                     </div>
                 </div>
             </li>
@@ -144,12 +144,18 @@
                     </div>
                 </div>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Administration
+            </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>HR Module</span></a>
             </li>
 
             <!-- Nav Item - Tables -->

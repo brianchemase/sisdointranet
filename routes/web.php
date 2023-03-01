@@ -81,6 +81,8 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::get('/MonthlyLoanRepayments', [LoaningController::class, 'loan_repayments_summary'])->name('monthlyrepayments');
     //loan disbusment summary
     Route::get('/MonthlyLoandisbusments', [LoaningController::class, 'loan_disbusment_summary'])->name('monthlyloandisbusments');
+    // monthly loan repayments
+    Route::get('/MonthlyLoanRepaymentList', [LoaningController::class, 'monthly_loan_repayments'])->name('monthlyloanrepaymentlist');// running loans
 
     //logout
     Route::get('/accounts/logout', [AuthenticationController::class, 'logout'])->name('signout');
