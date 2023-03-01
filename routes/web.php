@@ -77,6 +77,10 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     Route::get('/LoanApplicationForm', [LoaningController::class, 'loan_application_form'])->name('loanapplicationform');
     Route::post('/SaveLoanApplication', [LoaningController::class, 'register_loan_application'])->name('saveloanapplication');//registration of a loan
 
+    //loan repayments summary
+    Route::get('/MonthlyLoanRepayments', [LoaningController::class, 'loan_repayments_summary'])->name('monthlyrepayments');
+    //loan disbusment summary
+    Route::get('/MonthlyLoandisbusments', [LoaningController::class, 'loan_disbusment_summary'])->name('monthlyloandisbusments');
 
     //logout
     Route::get('/accounts/logout', [AuthenticationController::class, 'logout'])->name('signout');

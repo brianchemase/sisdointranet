@@ -242,6 +242,26 @@ class LoaningController extends Controller
             return view ('accounts.runningloans', compact('running_loans'));
         
     }
+    public function loan_repayments_summary()
+    {
+        $monthly_payment_data=LoanRepayment::selectRaw('MONTH(payment_date) AS repayment_month, YEAR(payment_date) AS repayment_year, SUM(amount) AS total_repayments')
+			->groupBy('repayment_month', 'repayment_year')
+			->orderBy('repayment_year', 'desc')
+			->orderBy('repayment_month', 'desc')
+			->get();
+
+        return view ('accounts.loanrepaymentstable', compact('monthly_payment_data'));
+    }
+    public function loan_disbusment_summary()
+    {
+        $monthly_loaning_data=LoanData::selectRaw('MONTH(approval_date) AS disbusment_month, YEAR(approval_date) AS disbusment_year, SUM(loan_approved) AS total_loans')
+			->groupBy('disbusment_month', 'disbusment_year')
+			->orderBy('disbusment_year', 'desc')
+			->orderBy('disbusment_month', 'desc')
+			->get();
+
+        return view ('accounts.loandisbusmenttable', compact('monthly_loaning_data'));
+    }
     public function search_entry()
     {
 

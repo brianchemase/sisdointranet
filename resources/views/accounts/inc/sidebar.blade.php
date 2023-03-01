@@ -89,6 +89,13 @@
                     </div>
                 </div>
             </li>
+             <!-- Divider -->
+             <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Reports
+            </div>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -101,8 +108,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="#">Colors</a>
-                        <a class="collapse-item" href="#">Borders</a>
+                        <a class="collapse-item" href="{{route('monthlyloandisbusments')}}">Loan Disbusment Summary</a>
+                        <a class="collapse-item" href="{{route('monthlyrepayments')}}">Loan Repayment Summary</a>
                         <a class="collapse-item" href="#">Animations</a>
                         <a class="collapse-item" href="#">Other</a>
                     </div>
