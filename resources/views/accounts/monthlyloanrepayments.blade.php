@@ -81,7 +81,7 @@
                                             <th>ID Number</th>
                                             <th>LoadID</th>
                                             <th>Client Contact</th>
-                                            <th>Last Payment Date</th>
+                                            <th>Payment Date</th>
                                             <th>Amount</th>
                                             <th>Balance</th>
                                         </tr>
@@ -93,14 +93,14 @@
                                             <th>ID Number</th>
                                             <th>LoadID</th>
                                             <th>Client Contact</th>
-                                            <th>Last Payment Date</th>
+                                            <th>Payment Date</th>
                                             <th>Amount</th>
                                             <th>Balance</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 
-                                            @foreach ($running_loans as $data)
+                                            @foreach ($loan_repayments_data as $data)
                                                 <tr>
                                                     <td> {{ $loop->iteration }}</td>
                                                     <td>{{ $data->first_name }} {{ $data->middle_name }} {{ $data->last_name }}</td>

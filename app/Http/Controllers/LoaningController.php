@@ -280,19 +280,19 @@ class LoaningController extends Controller
         //     ->orderBy('t1.loan_id')
         //     ->get();
 
-            $running_loans = DB::table('tbl_loan_repayments as l')
+            $loan_repayments_data = DB::table('tbl_loan_repayments as l')
                 ->join('clients_data as c', 'c.id_number', '=', 'l.id_number')
                 ->select('l.id_number', 'c.phone as phone' , 'c.first_name', 'c.middle_name', 'c.last_name', 'l.loan_id', 'l.prev_balance as running_balance', 'l.amount as amount', 'l.mode_of_payment', 'l.payment_date')
             // ->whereBetween('l.payment_date', ['2023-03-01', '2023-03-31'])
                 ->whereYear('l.payment_date', '=', $current_year)
                 ->whereMonth('l.payment_date', '=', $current_month)
-                ->orderBy('l.id')
+                ->orderBy('l.payment_date')
                 ->orderBy('l.loan_id')
                 ->get();
 
     //return $running_loans;
         
-            return view ('accounts.monthlyloanrepayments', compact('running_loans' , 'current_month', 'current_year' ));
+            return view ('accounts.monthlyloanrepayments', compact('loan_repayments_data' , 'current_month', 'current_year' ));
         
     }
     public function loan_repayments_summary()
