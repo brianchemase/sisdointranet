@@ -266,19 +266,31 @@ class LoaningController extends Controller
 
        
         
-        $running_loans = DB::table('tbl_loan_repayments as t1')
-            ->join('clients_data as c', 'c.id_number', '=', 't1.id_number')
-            ->join(DB::raw('(SELECT loan_id, MAX(id) AS max_id FROM tbl_loan_repayments GROUP BY loan_id) as t2'), function ($join) {
-                $join->on('t1.loan_id', '=', 't2.loan_id')
-                     ->on('t1.id', '=', 't2.max_id');
-            })
-            ->select('t1.id_number', 't1.loan_id', 't1.prev_balance', 't1.amount as amount', 't1.mode_of_payment', 't1.payment_date', 't1.running_balance', 'c.id_number', 'c.first_name', 'c.last_name', 'c.phone')
-            ->where('t1.running_balance', '>', 0)
-            ->whereYear('t1.payment_date', '=', $current_year)
-            ->whereMonth('t1.payment_date', '=', $current_month)
-            ->orderBy('t1.id')
-            ->orderBy('t1.loan_id')
-            ->get();
+        // $running_loans = DB::table('tbl_loan_repayments as t1')
+        //     ->join('clients_data as c', 'c.id_number', '=', 't1.id_number')
+        //     ->join(DB::raw('(SELECT loan_id, MAX(id) AS max_id FROM tbl_loan_repayments GROUP BY loan_id) as t2'), function ($join) {
+        //         $join->on('t1.loan_id', '=', 't2.loan_id')
+        //              ->on('t1.id', '=', 't2.max_id');
+        //     })
+        //     ->select('t1.id_number', 't1.loan_id', 't1.prev_balance', 't1.amount as amount', 't1.mode_of_payment', 't1.payment_date', 't1.running_balance', 'c.id_number', 'c.first_name', 'c.last_name', 'c.phone')
+        //     ->where('t1.running_balance', '>', 0)
+        //     ->whereYear('t1.payment_date', '=', $current_year)
+        //     ->whereMonth('t1.payment_date', '=', $current_month)
+        //     ->orderBy('t1.id')
+        //     ->orderBy('t1.loan_id')
+        //     ->get();
+
+ $running_loans = DB::table('tbl_loan_repayments as l')
+    ->join('clients_data as c', 'c.id_number', '=', 'l.id_number')
+    ->select('l.id_number', 'c.phone as phone' , 'c.first_name', 'c.last_name', 'l.loan_id', 'l.prev_balance as running_balance', 'l.amount as amount', 'l.mode_of_payment', 'l.payment_date')
+   // ->whereBetween('l.payment_date', ['2023-03-01', '2023-03-31'])
+    ->whereYear('l.payment_date', '=', $current_year)
+    ->whereMonth('l.payment_date', '=', $current_month)
+    ->orderBy('l.id')
+    ->orderBy('l.loan_id')
+    ->get();
+
+    //return $running_loans;
         
             return view ('accounts.monthlyloanrepayments', compact('running_loans' , 'current_month', 'current_year' ));
         
