@@ -54,7 +54,12 @@ class AccountsController extends Controller
 			//->where('mode_of_payment', 'mpesa')
             ->sum('amount');
 
-			//return $mpesa_repayments;
+		//total laf collected
+		$totalLafCollected = DB::table('tbl_loaning')
+            ->sum('laf');
+
+
+		//return $totalLafCollected;
 
 		//$montly_repayments=$mpesa_repayments+$bank_repayments;
 
@@ -119,7 +124,7 @@ class AccountsController extends Controller
         return view('accounts.home' , 
         compact('montly_repayments', 'lastMontRepayments', 'clients_counts', 
         'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments',
-		'totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued', 'monthly_payment_data'
+		'totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued', 'monthly_payment_data', 'totalLafCollected'
     
     ));
     }
