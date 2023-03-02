@@ -28,7 +28,9 @@
     <div style="margin:0;padding:15;">
     <br>
     <br>
-       <p><b>{{ $report_date }}<br><br>
+       <p><b>
+       {{ \Carbon\Carbon::parse($report_date)->format('d/m/Y')}}
+       <br><br>
        {{ $client_names }} </b><br><br>
        ID No. {{ $client_id_no }} <br><br>
         <b>Dear {{ $client_fnames }},</b>
