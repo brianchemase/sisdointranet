@@ -47,18 +47,12 @@
                                         <div class="input-group-text">Year</div>
                                         </div>
                                         <div class="form-group">
-                                            
                                             <select class="form-control" name="y" id="exampleFormControlSelect1">
                                             <option>2022</option>
-                                            <option>2023</option>
-                                            
+                                            <option>2023</option> 
                                             </select>
                                         </div>
                                     </div>
-
-                                   
-
-
                                     <button type="submit" class="btn btn-primary mb-2">Submit</button>
                                     </form>
                                 </div>
@@ -99,7 +93,6 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-
                                             @foreach ($loan_repayments_data as $data)
                                                 <tr>
                                                     <td> {{ $loop->iteration }}</td>

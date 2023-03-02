@@ -537,6 +537,7 @@ class AccountsController extends Controller
 		$penalty=$request->loan_penalty;
 		$officer_names=$request->officer_name;
 		$designation=$request->officer_designation;
+		$report_date=$request->date;
 
 		
 
@@ -572,8 +573,9 @@ class AccountsController extends Controller
 			'client_id_no' => $client_id_no,
 			'officer' => $officer_names,
 			'designation' => $designation,
+			'report_date' =>$report_date,
 			
-			'report_date' => date('d/m/Y')
+			//'report_date' => date('d/m/Y')
 		];
 		//return view ('reports.demandletter');
 
