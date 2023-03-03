@@ -16,7 +16,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">SISDO CLIENT LIST</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive table-sm">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -49,7 +49,7 @@
                                             @foreach ($clients as $client)
                                                 <tr>
                                                     <td>{{ $client->id }}</td>
-                                                    <td>{{ $client->first_name }} {{ $client->last_name }}</td>
+                                                    <td>{{ $client->first_name }} {{ $client->middle_name }} {{ $client->last_name }}</td>
                                                     <td>{{ $client->id_number }}</td>
                                                     <td>{{ $client->phone }}</td>
                                                     <td>{{ $client->email }}</td>
