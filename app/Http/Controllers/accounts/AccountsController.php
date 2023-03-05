@@ -58,6 +58,11 @@ class AccountsController extends Controller
 		$totalLafCollected = DB::table('tbl_loaning')
             ->sum('laf');
 
+		//waived interests
+		$interestwaiver = DB::table('tbl_loan_repayments')
+			->where('mode_of_payment', 'interestwaiver')
+            ->sum('amount');
+
 
 		//return $totalLafCollected;
 
@@ -124,7 +129,7 @@ class AccountsController extends Controller
         return view('accounts.home' , 
         compact('montly_repayments', 'lastMontRepayments', 'clients_counts', 
         'mpesa_repayments','bank_repayments','expected_repayment','pending_repayment','gender_chat','repayments',
-		'totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued', 'monthly_payment_data', 'totalLafCollected'
+		'totalRepaymentAmount','Outstanding_loan_balance','total_loan_issued', 'monthly_payment_data', 'totalLafCollected','interestwaiver'
     
     ));
     }

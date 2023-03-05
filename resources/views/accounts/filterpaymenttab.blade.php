@@ -88,6 +88,7 @@
                     <option selected disabled>Choose...</option>
                     <option value="mpesa">Mpesa</option>
                     <option value="bank">Bank Deposit</option>
+                    <option value="interestwaiver">Interest Waiver</option>
                 </select>
             </div>
 

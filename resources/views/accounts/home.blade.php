@@ -91,7 +91,7 @@
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($clients_counts)}}</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -159,7 +159,16 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-4 mb-4">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body">
+            <div class="text-white-50 small">Total Interest waiver</div>
+                {{number_format($interestwaiver)}}
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4">
         <div class="card bg-light text-black shadow">
             <div class="card-body">
             <div class="text-black-50 small"> <b>Total Loans Disbused</b> </div>
@@ -168,7 +177,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 mb-4">
+    <div class="col-lg-4 mb-4">
         <div class="card bg-dark text-white shadow">
             <div class="card-body">
             <div class="text-white-50 small">Total Loan Application Fee</div>
