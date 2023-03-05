@@ -63,7 +63,36 @@ class AuthenticationController extends Controller
                     $request->session()->put('username', $user->names);
                     $request->session()->put('station', $user->station);
                     $request->session()->put('dept', $user->dept);
-                    saveLoginHistoryLog();
+                    ////
+                            $logdata=staff::where('id','=', session('loggeduserid'))->first();
+                            $usernames = $logdata->names;
+                            $station=$logdata->station;
+                            $remarks="has logged into the intranet system at ";
+                            $dept=session('dept'); 
+
+                         if (!empty($_SERVER["HTTP_CLIENT_IP"]))
+							{
+							 $ip = $_SERVER["HTTP_CLIENT_IP"];
+							}
+							elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"]))
+							{
+							 $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+							}
+							else
+							{
+							 $ip = $_SERVER["REMOTE_ADDR"];
+							} 
+                
+                            $logs= new HistoryLog;
+                            $logs->staff_id=$usernames; 
+                            $logs->station= $station;
+                            $logs->dept=$dept;
+                            $logs->action= $remarks;
+                            $logs->date=$date = date("Y-m-d H:i:s");
+                            $logs->ip=$ip;
+                            $save = $logs->save();
+                    ///
+                    //saveLoginHistoryLog();
                     return redirect ('accounts');
                 }
 
@@ -94,15 +123,14 @@ class AuthenticationController extends Controller
 							 $ip = $_SERVER["REMOTE_ADDR"];
 							} 
                 
-                $logs= new HistoryLog;
-                $logs->staff_id=$usernames; 
-                $logs->station= $station;
-                $logs->dept=$dept;
-                $logs->action= $remarks;
-                $logs->date=$date = date("Y-m-d H:i:s");
-                $logs->ip=$ip;
-                $save = $logs->save();
-
+                    $logs= new HistoryLog;
+                    $logs->staff_id=$usernames; 
+                    $logs->station= $station;
+                    $logs->dept=$dept;
+                    $logs->action= $remarks;
+                    $logs->date=$date = date("Y-m-d H:i:s");
+                    $logs->ip=$ip;
+                    $save = $logs->save();
 
                     ///
                     //saveLoginHistoryLog();
