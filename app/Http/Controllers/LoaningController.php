@@ -231,7 +231,7 @@ class LoaningController extends Controller
                 $join->on('t1.loan_id', '=', 't2.loan_id')
                      ->on('t1.id', '=', 't2.max_id');
             })
-            ->select('t1.id_number', 't1.loan_id', 't1.prev_balance', 't1.amount as amount', 't1.mode_of_payment', 't1.payment_date', 't1.running_balance', 'c.id_number', 'c.first_name', 'c.last_name', 'c.phone')
+            ->select('t1.id_number', 't1.loan_id', 't1.prev_balance', 't1.amount as amount', 't1.mode_of_payment', 't1.payment_date', 't1.running_balance', 'c.id_number', 'c.first_name', 'c.middle_name', 'c.last_name', 'c.phone')
             ->where('t1.running_balance', '>', 0)
             //->orderBy('t1.running_balance')
             ->orderBy('t1.id')
@@ -316,11 +316,8 @@ class LoaningController extends Controller
         return view ('accounts.loandisbusmenttable', compact('monthly_loaning_data'));
     }
     public function search_entry()
-    {
-
-       
+    {  
         //$clients=DB::table('clients_data')->get();
-
         $clients=DB::table('tbl_loan_repayments AS l')
         ->join('clients_data AS c', 'c.id_number', '=', 'l.id_number')
         ->where('l.running_balance', '>', 1)
@@ -331,13 +328,10 @@ class LoaningController extends Controller
         ->get();
     
         if(isset($_GET['q']))
-        {
-         
+        {    
             $id_no=$_GET['q'];
             $details=$_GET['q'];
-
 			//return $details;
-        
             $results=DB::table('tbl_loan_repayments')
             ->where('tbl_loan_repayments.id_number', 'LIKE','%'.$id_no.'%')
             ->orwhere('phone','LIKE','%'.$details.'%')
@@ -355,11 +349,9 @@ class LoaningController extends Controller
 			$phone_no= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->phone;
 			$client_name= ClientsData::orderBy('id', 'desc')->where('id_number','LIKE','%'.$details.'%')->first()->first_name;
 
-
             return view('accounts.filterpaymenttab', ['results'=>$results], compact( 'clients','date','running_balance','client_id_no','loan_id_no','phone_no','client_name'));
         }
        // return view('accounts.filterpageblank',compact('clients'));
-
         else{
             return view('accounts.filterpaymenttab',compact('clients'));
         }

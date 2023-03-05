@@ -46,7 +46,7 @@
                                             @foreach ($running_loans as $data)
                                                 <tr>
                                                     <td> {{ $loop->iteration }}</td>
-                                                    <td>{{ $data->first_name }} {{ $data->last_name }}</td>
+                                                    <td>{{ $data->first_name }} {{ $data->middle_name }} {{ $data->last_name }}</td>
                                                     <td>{{ $data->id_number }}</td>
                                                     <td>{{ $data->loan_id }}</td>
                                                     <td>{{ $data->phone }}</td>
