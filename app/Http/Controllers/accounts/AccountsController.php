@@ -288,9 +288,6 @@ class AccountsController extends Controller
 		 // Save the file locally in the storage/public/ folder under a new folder named /ppts
 		 $request->ppt->store('ppts', 'public');
 
-
-
-
 		//Insert data into database
 		$new_client = new ClientsData;
 		$new_client->first_name = $request->fname;
@@ -305,7 +302,6 @@ class AccountsController extends Controller
 		$new_client->passport = $request->ppt->hashName();
 		$save = $new_client->save();
 
-		
 
 		 if($save){
 		   //Mail::to($email)->send(new AccountRegistration($fname,$username));
@@ -333,9 +329,10 @@ class AccountsController extends Controller
             ->orwhere('phone','LIKE','%'.$details.'%')
             ->orwhere('loan_id','LIKE','%'.$details.'%' )
             ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
-            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
+            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name','c.middle_name', 'c.last_name')
 			->orderBy('id', 'desc')
             ->get();
+			//return $results;
             $date="";
 
 			$running_balance= LoanRepayment::orderBy('id', 'desc')->where('id_number', $details)->first()->running_balance;
@@ -463,7 +460,7 @@ class AccountsController extends Controller
             ->orwhere('phone','LIKE','%'.$details.'%')
             ->orwhere('loan_id','LIKE','%'.$details.'%' )
             ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
-            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
+            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name','c.middle_name', 'c.last_name')
 			->orderBy('id', 'asc')
             ->get();
             $date="";

@@ -338,7 +338,7 @@ class LoaningController extends Controller
             ->orwhere('loan_id','LIKE','%'.$details.'%' )
             ->Join('clients_data as c', 'c.id_number', '=', 'tbl_loan_repayments.id_number')
             ->where('tbl_loan_repayments.running_balance', '>', 1)
-            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name', 'c.last_name')
+            ->select ('tbl_loan_repayments.*', 'c.id_number', 'c.first_name','c.middle_name', 'c.last_name')
 			->orderBy('id', 'desc')
             ->get();
             $date="";
