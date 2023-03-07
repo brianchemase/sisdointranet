@@ -192,7 +192,7 @@
                               <tr class="odd gradeX"> 
                                   <td> {{$no++}}</td>    
                                   
-                                  <td> {{ $result->first_name}} {{ $result->last_name}}</td>
+                                  <td> {{ $result->first_name}} {{ $result->middle_name}} {{ $result->last_name}}</td>
                                   <td> {{ $result->id_number}}</td>
                                   <td> {{ $result->loan_id}}</td>
                                   <td> <?php echo $date;?></td>

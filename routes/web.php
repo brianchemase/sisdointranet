@@ -63,6 +63,9 @@ Route::group(['prefix' => 'accounts','middleware' => ['isloggedin']], function()
     //users tables
     Route::get('/Sisdostafflist', [StaffManagementController::class, 'staff_list'])->name('ActiveStaffList');
 
+    //historylogs tables
+    Route::get('/LogsData', [StaffManagementController::class, 'history_logs'])->name('historylogsdata');
+
     //deman letters
     Route::get('/DemandLetter', [AccountsController::class, 'demand_letter_generation'])->name('DemandLetter');
     Route::post('/GenerateDemandLetter', [AccountsController::class, 'generate_demand_letter'])->name('makeDemandLetter');
